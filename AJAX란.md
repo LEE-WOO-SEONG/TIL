@@ -44,3 +44,8 @@ Asynchronous Javascript And Xml의 약자로 브라우저가 가진 XMLHttpReque
 2. 연속으로 데이터를 요청하면 서버 부하가 증가할 수 있다.
 
 3. XMLHttpRequest를 통해 통신을 하는 경우사용자에게 아무런 진행 정보가 주어지지 않는다. 그래서 아직 요청이 완료되지 않았는데 사용자가 페이지를 떠나거나 오작동할 우려가 발생하게 된다. 
+
+
+
+<a href="https://coding-factory.tistory.com/143">참조 블로그</a>
+
