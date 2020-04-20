@@ -44,8 +44,8 @@ Unicode는 1byte를 사용하여 2<sup>7</sup> = 128가지를 표현할 수 있�
 
 참조 블로그
 
-[아스키코드, 유니코드란?][https://minwan1.github.io/2018/06/09/2018-06-09-ASCII-Unicode/] 
+<a href="https://minwan1.github.io/2018/06/09/2018-06-09-ASCII-Unicode/">아스키코드, 유니코드란?</a>
 
-[ASCII Table - 아스키 코드표][https://shaeod.tistory.com/228]
+<a href="https://shaeod.tistory.com/228">ASCII Table - 아스키 코드표</a>
 
-[아스키(ASCII)코드와 유니코드(Unicode)의 이해][https://whatisthenext.tistory.com/103]
+<a href="https://whatisthenext.tistory.com/103">아스키(ASCII)코드와 유니코드(Unicode)의 이해</a>
