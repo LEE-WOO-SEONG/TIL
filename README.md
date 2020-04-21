@@ -13,7 +13,6 @@
     <li><a href="">HTML 전역 속성, 기타</a></li>
   </ul>
 </details>
-
 <details>
   <summary>CSS</summary>
     <ul>
@@ -30,6 +29,26 @@
       <li><a href="">Z-index</a></li>
       <li><a href="">Sass(scss)</a></li>
       <li><a href="">Display none & visibility hidden</a></li>
+    </ul>
+</details>
+
+<details>
+    <summary>JS</summary>
+    <ul>
+        <li><a href="">JS 기초</a></li>
+        <li><a href="">JS 용어정리</a></li>
+        <li><a href="">JS 문법</a></li>
+        <li><a href="">변수, 상수 선언</a></li>
+        <li><a href="">연산자</a></li>
+        <li><a href="">조건문</a></li>
+        <li><a href="">반복문</a></li>
+        <li><a href="">배열</a></li>
+        <li><a href="">함수</a></li>
+        <li><a href="">객체</a></li>
+        <li><a href="">프로토타입과 클래스</a></li>
+        <li><a href="">비동기 처리</a></li>
+        <li><a href="">Promise 함수</a></li>
+        <li><a href="">AJAX란</a></li>
     </ul>
 </details>
 
@@ -56,4 +75,12 @@
     <li><a href="">Web accibility</a></li>
     <li><a href="">아스키코드(ASCII)와 Byte</a></li>
   </ul>
+</details>
+<details>
+    <summary>Poiema_studyNote</summary>
+    <ul>
+        <li><a href="">Ch1~3 프로그래밍 & 자바스크립트에 대한 이해</a></li>
+        <li><a href="">Ch4_변수</a></li>
+        <li><a href="">Ch5_표현식과 문</a></li>
+    </ul>
 </details>
