@@ -5,7 +5,7 @@
 - [자바스크립트 학습법](#자바스크립트-학습법)
 - [Computational Thinking](#computational-thinking)
 - [Compile&interpret](#compile-vs-interpret)
-- [웹 사이트 vs 웹 애플리케이션](웹-사이트-vs-웹-애플리케이션)
+- [웹사이트 vs 웹애플리케이션](웹사이트-vs-웹애플리케이션)
 
 <br>
 
@@ -76,7 +76,7 @@
 <a href="https://jins-dev.tistory.com/entry/Compiler-와-Interpreter-의-개념과-차이점">참고사이트</a>
 <br>
 
-## 웹 사이트 vs 웹 애플리케이션
+## 웹사이트 vs 웹애플리케이션
 
 
 
