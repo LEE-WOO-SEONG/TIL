@@ -5,7 +5,7 @@
 - [자바스크립트 학습법](#자바스크립트-학습법)
 - [Computational Thinking](#computational-thinking)
 - [Compile&interpret](#compile-vs-interpret)
-- [웹사이트 vs 웹애플리케이션](웹사이트-vs-웹애플리케이션)
+- [웹사이트 vs 웹애플리케이션](#웹사이트-vs-웹애플리케이션)
 
 <br>
 
