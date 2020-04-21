@@ -80,7 +80,7 @@ MySQL
 - url의 기본구조
 
 ```
-http://www.example.com:80/path/to/myfile.htmlkey1=value1&key2=value2#SomewhereInTheDocument
+http://www.example.com:80/path/to/myfile.html?key1=value1&key2=value2#SomewhereInTheDocument
 ```
 
 1. http(hypertext transfer protocol)
@@ -99,7 +99,7 @@ http://www.example.com:80/path/to/myfile.htmlkey1=value1&key2=value2#SomewhereIn
 
 : port는 기술적으로 웹서버에서 자원을 접근하기 위해 사용하는 "관문"을 나타내는 용어이다.
 
-  만약 웹 서버가 자원에 접급하기 위해 표준 http port(http :80 / https :443)를 사용한다면 포트 번호는 보통 생략된다. 하지만 해당 경우가 아니라면 포트 번호는 필수로 명시해 주어야 한다.
+  만약 웹 서버가 자원에 접급하기 위해 표준 port(http :80 / https :443)를 사용한다면 포트 번호는 보통 생략된다. 하지만 해당 경우가 아니라면 포트 번호는 명시해 주어야 한다.
 
 4. path to the file?
 
@@ -165,3 +165,43 @@ SQL 문의 종류
   ```
 
   
+
+### Mysql 함수
+
+
+
+- join
+
+: 2가지 이상의 테이블을 하나의 새로운 테이블로 모아줄 때 사용한다
+
+1. inner join
+
+2. left join
+
+3. right join
+
+   ![image-20200421131752753](C:\Users\112606\AppData\Roaming\Typora\typora-user-images\image-20200421131752753.png)	
+
+- union
+
+: select문의 결과 데이터를 하나로 합쳐서 출력할 때 사용한다. union은 자동으로 중복되는 항목을 제거하여 주는데, 원치 않을 시 union all을 사용하면 된다.
+
+또한 union 사용 시 full outer join을 구현할 수 있다.
+
+- subquery
+
+: query문 안에 있는 query문을 뜻한다.
+
+
+
+- view
+
+: 가상테이블 데이터를 보고자 할 때만 사용. 실제로는 데이터를 저장하지 않음.
+
+
+
+- index
+
+: 테이블에서 데이터를 검색할 때 빠르게 찾을 수 있게 해주는 기능.
+
+단, 테이블의 저장공간의 10%정도를 더 사용한다는 것과 insert/update/delte 시 쿼리속도가 늦어진다는 단점이 있다.
