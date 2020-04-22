@@ -1,16 +1,8 @@
-# JS Note_day1
+# Programming & comprehension of JS
 
-1. [자바스크립트의 특징](#자바스크립트의-특징)
+[TOC]
 
-2. [기본개념과 동작원리 이해의 중요성](#기본개념과-동작원리-이해의-중요성)
-
-3. [자바스크립트 학습법](#자바스크립트-학습법)
-
-4. [Computational Thinking](#computational-thinking)
-
-5. [Compile&interpret](#compile-vs-interpret)
-
-6. [웹사이트 vs 웹애플리케이션](#웹사이트-vs-웹애플리케이션)
+<br>
 
 <br>
 
@@ -45,7 +37,7 @@
 
    <br>
 
-## computational thinking
+### computational thinking
 
 : 프로그래밍이란 컴퓨터에게 실행을 요구하는 "컴퓨터와의 커뮤니케이션"이다. 
 
@@ -61,7 +53,7 @@
 이 때, 사용되는 번역기를 compiler 혹은 interpreter라고 한다.
 <br>
 
-## compile vs interpret
+### compile vs interpret
 
    <ul><span style="fontsize: 20px">compile language</span>
       <li>실행시점 : 런타임 이전 </li>
@@ -83,7 +75,7 @@
 
 ## 웹사이트 vs 웹애플리케이션
 
-
+<br>
 
 ### 웹 사이트
 
