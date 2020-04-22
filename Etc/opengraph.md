@@ -30,4 +30,5 @@
 
 
 
-###### [open graph test][ https://developers.facebook.com/tools/debug/]
+###### [open graph test](https://developers.facebook.com/tools/debug/)
+

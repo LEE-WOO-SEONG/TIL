@@ -4,83 +4,86 @@
 ## Index
 
 <details>
-  <summary>HTML</summary>
+  <summary>html</summary>
   <ul>
-    <li><a href="">HTML 요소 - 인라인 텍스트 & 수정</a></li>
-    <li><a href="">HTML 요소 - 콘텐츠 구분 & 문자 콘텐츠</a></li>
-    <li><a href="">HTML 요소 - 멀티미디어 & 내장 콘텐츠</a></li>
-    <li><a href="">HTML 요소 - 표 콘텐츠 & 양식</a></li>
-    <li><a href="">HTML 전역 속성, 기타</a></li>
+    <li><a href="./html/html_block-element">html_block-element</a></li>
+    <li><a href="./html/html_globalattribute">html_globalattribute</a></li>
+    <li><a href="./html/html_inline-element">html_inline-element</a></li>
+    <li><a href="./html/html_media-tag">html_media-tag</a></li>
+    <li><a href="./html/html_table&form">html_table&form</a></li>
   </ul>
 </details>
+
 <details>
-  <summary>CSS</summary>
+  <summary>css</summary>
     <ul>
-      <li><a href="">CSS Unit</a></li>
-      <li><a href="">CSS Selector & Inheritance</a></li>
-      <li><a href="">CSS Font & Text</a></li>
-      <li><a href="">CSS BOX MODEL</a></li>
-      <li><a href="">CSS Background</a></li>
-      <li><a href="">CSS Float & position</a></li>
-      <li><a href="">CSS Flexible box</a></li>
-      <li><a href="">CSS Animation & Multi-column</a></li>
-      <li><a href="">CSS Transition</a></li>
-      <li><a href="">CSS Grid</a></li>
-      <li><a href="">Z-index</a></li>
-      <li><a href="">Sass(scss)</a></li>
-      <li><a href="">Display none & visibility hidden</a></li>
+      <li><a href="./css/css_unit">css_unit</a></li>
+      <li><a href="./css/css_selector&Inheritance">css_selector&Inheritance</a></li>
+      <li><a href="./css/css_font&text">css_font&text</a></li>
+      <li><a href="./css/css_boxmodel">css_boxmodel</a></li>
+      <li><a href="./css/css_background">css_background</a></li>
+      <li><a href="./css/css_float&position">css_float&position</a></li>
+      <li><a href="./css/css_flexiblebox">css_flexiblebox</a></li>
+      <li><a href="./css/css_animation&multi-column">css_animation&multi-column</a></li>
+      <li><a href="./css/css_transition">css_transition</a></li>
+      <li><a href="./css/css_grid">css_grid</a></li>
+      <li><a href="./css/z-index">z-index</a></li>
+      <li><a href="./css/sass(scss)">sass(scss)</a></li>
+      <li><a href="./css/display.none&visibility.hidden">display.none&visibility.hidden</a></li>
     </ul>
 </details>
 
 <details>
-    <summary>JS</summary>
+    <summary>js</summary>
     <ul>
-        <li><a href="">JS 기초</a></li>
-        <li><a href="">JS 용어정리</a></li>
-        <li><a href="">JS 문법</a></li>
-        <li><a href="">변수, 상수 선언</a></li>
-        <li><a href="">연산자</a></li>
-        <li><a href="">조건문</a></li>
-        <li><a href="">반복문</a></li>
-        <li><a href="">배열</a></li>
-        <li><a href="">함수</a></li>
-        <li><a href="">객체</a></li>
-        <li><a href="">프로토타입과 클래스</a></li>
-        <li><a href="">비동기 처리</a></li>
-        <li><a href="">Promise 함수</a></li>
-        <li><a href="">AJAX란</a></li>
+        <li><a href="./js/js_basic">js_basic</a></li>
+        <li><a href="./js/js_dictionary">js_dictionary</a></li>
+        <li><a href="./js/js_grammer">js_grammer</a></li>
+        <li><a href="./js/declaration_variable">declaration_variable</a></li>
+        <li><a href="./js/calculator">calculator</a></li>
+        <li><a href="./js/conditional_statement">conditional_statement</a></li>
+        <li><a href="./js/loop_statement">loop_statement</a></li>
+        <li><a href="./js/array">array</a></li>
+        <li><a href="./js/function">function</a></li>
+        <li><a href="./js/object">object</a></li>
+        <li><a href="./js/prototype&class">prototype&class</a></li>
+        <li><a href="./js/asynchronous">asynchronous</a></li>
+        <li><a href="./js/promise">promise</a></li>
+        <li><a href="./js/ajax">ajax</a></li>
     </ul>
 </details>
 
 <details>
-  <summary>Aria</summary>
+  <summary>aria</summary>
   <ul>
-    <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Aria/aria%20landmark.md">aria-landmark</a></li>
+    <li><a href="./aria/aria-landmark">aria-landmark</a></li>
   </ul>
 </details>
 
 <details>
-  <summary>DB</summary>
+  <summary>db</summary>
   <ul>
-    <li><a href="">DB(database)</a></li>
+    <li><a href="./db/db(database)">db(database)</a></li>
   </ul>
 </details>
 
 <details>
-  <summary>Etc</summary>
+  <summary>etc</summary>
   <ul>
-    <li><a href="">Favicon</a></li>
-    <li><a href="">Open graph</a></li>
-    <li><a href="">SEO(Search Engine Optimize)</a></li>
-    <li><a href="">Web accibility</a></li>
-    <li><a href="">아스키코드(ASCII)와 Byte</a></li>
+    <li><a href="./etc/favicon">favicon</a></li>
+    <li><a href="./etc/opengraph">opengraph</a></li>
+    <li><a href="./etc/seo(searchengine_optimize)">seo(searchengine_optimize)</a></li>
+    <li><a href="./etc/webaccibility">webaccibility</a></li>
+    <li><a href="./etc/ASCII&byte">ASCII&byte</a></li>
   </ul>
 </details>
+
 <details>
-    <summary>Poiema_studyNote</summary>
+    <summary>poiema_studynote</summary>
     <ul>
-        <li><a href="">Ch1~3 프로그래밍 & 자바스크립트에 대한 이해</a></li>
-        <li><a href="">Ch4_변수</a></li>
-        <li><a href="">Ch5_표현식과 문</a></li>
+        <li><a href="./poiema_studynote/Ch1~3_programming&comprehension">Ch1~3_programming&comprehension</a></li>
+        <li><a href="./poiema_studynote/Ch4_variable">Ch4_variable</a></li>
+        <li><a href="./poiema_studynote/Ch5_expression&statement">Ch5_expression&statement</a></li>
+        <li><a href="./poiema_studynote/Ch6_Datatype">Ch6_Datatype</a></li>
     </ul>
 </details>
