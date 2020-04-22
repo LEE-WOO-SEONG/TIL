@@ -2,12 +2,12 @@
 
 - Toc
 
-1. [Definition of variable(변수의 정의)](#definition-of-variable--------)
-2. [variable(변수)](#variable----)
-3. [identifier(식별자)](#identifier-----)
-4. [assignment(할당)](#assignment----)
-5. [Declaration of variable(변수선언)](#declaration-of-variable------)
-6. [Hoisting(호이스팅)](#hoisting------)
+1. [Definition of variable(변수의 정의)](#definition-of-variable(변수의-정의))
+2. [variable(변수)](#variable(변수))
+3. [identifier(식별자)](#identifier(식별자))
+4. [assignment(할당)](#assignment(할당))
+5. [Declaration of variable(변수선언)](#declaration-of-variable(변수선언))
+6. [Hoisting(호이스팅)](#hoisting(호이스팅))
 
 <br>
 
@@ -31,7 +31,7 @@
 
 하지만, 프로그래밍에서의 변수는 어떠한 양, 정보에대한 **상징적인 이름**을 뜻한다.
 
-```
+``` javascript
 10 + 20
 ```
 
@@ -63,8 +63,8 @@
 
 ### 식별자와 할당
 
-```
-Var result = 30;
+```javascript
+var result = 30;
 ```
 
 일반적으로 자바스크립트에서는 Var를 이용하여 변수를 나타낸다.
@@ -110,25 +110,25 @@ Var result = 30;
 
 1. 카멜 케이스 (camelCase) 
 
-```
+```javascript
 var firstName;
 ```
 
 2. 스네이크 케이스 (snake_case)
 
-```
+```javascript
 var first_name;
 ```
 
 3. 파스칼 케이스 (PasacalCase)
 
-```
+```javascript
 var FirstName;
 ```
 
 4. 헝가리언 케이스 (typeHungarianCase)
 
-```
+```javascript
 var strFirstName;            // 변수 type + identifier
 var $elem = $('.myClass');
 ```
@@ -143,7 +143,7 @@ var $elem = $('.myClass');
 
 변수에 값을 할당 시 할당연산자(=)를 사용한다. 할당연산자의 우변에 할당할 값을, 좌변에는 변수를 배치한다.
 
-```
+```javascript
 var a;          // 변수 선언
 a = 1;          // 값 할당
 
