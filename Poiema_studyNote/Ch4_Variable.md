@@ -2,13 +2,13 @@
 
 - Toc
 
-1. [Definition of variable(변수의 정의)](#definition-of-variable(변수의-정의))
-2. [variable(변수)](#variable(변수))
-3. [identifier(식별자)](#identifier(식별자))
-4. [assignment(할당)](#assignment(할당))
-5. [Declaration of variable(변수선언)](#declaration-of-variable(변수선언))
-6. [Hoisting(호이스팅)](#hoisting(호이스팅))
-7. 0422
+1. [Definition of variable](#definition-of-variable변수의-정의)
+2. [variable](#variable변수)
+3. [identifier](#identifier식별자)
+4. [assignment](#assignment할당)
+5. [Declaration of variable](#declaration-of-variable변수선언)
+6. [Hoisting](#hoisting호이스팅)
+7. [0422 TIL](#0422-til)
 
 <br>
 
@@ -253,7 +253,7 @@ hoisting은 끌어올리다라는 사전적의미를 지닌다.
 
 
 
-## 0422 TIL 추가
+## 0422 TIL
 
 ### 변수란 !!하나!!의 값을 저장하기 위해 확보한 메모리 공간이라는 것을 꼭 기억하자.
 

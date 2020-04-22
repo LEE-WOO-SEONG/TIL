@@ -2,12 +2,12 @@
 
 - Toc
 
-1. [Value(값)](#value(값))
-2. [Literal(리터럴)](#literal(리터럴))
-3. [Expression(표현식)](#expression(표현식))
-4. [Statement(문)](#statement(문))
+1. [Value](#value값)
+2. [Literal](#literal리터럴)
+3. [Expression](#expression표현식)
+4. [Statement](#statement문)
 5. [Meaning of Semicolon](#meaning-of-semicolon)
-6. [Statement of Expression & NonExpression (표현식인 문과 아닌 문)](#statement-of-expression-&-nonexpression-(표현식인-문과-아닌-문))
+6. [Statement of Expression & NonExpression](#statement-of-expression--nonexpression-표현식인-문과-아닌-문)
 
 <br>
 

@@ -11,6 +11,16 @@
    1-3.[Template literal](#template-literal)
    
    1-4.[boolean type](#boolean-type)
+   
+   1-5.[undefined type](#undefined-type)
+   
+   1-6.[null type](#null-type)
+   
+   1.7[symbol type](#symbol-type)
+   
+2. [object type](#object-type)
+
+3. [데이터 타입의 필요성](#데이터-타입의-필요성)
 
 <br>
 
@@ -207,7 +217,7 @@ console.log(`1+2 = ${1+2}`);        // 1+2 = 3
 
 <br>
 
-## boolean type
+### boolean type
 
 불리언 타입 값은 논리적 참, 거짓만을 나타내므로 true / false의 값만 나타낸다.
 
