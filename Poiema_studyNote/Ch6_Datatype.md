@@ -1,6 +1,12 @@
 # Datatype
 
-[toc]
+- Toc
+
+1. [Primitive type](#primitive-type)
+
+   1-1. [Number type](#number-type)
+
+   1-2. [String type](#string-type)
 
 <br>
 

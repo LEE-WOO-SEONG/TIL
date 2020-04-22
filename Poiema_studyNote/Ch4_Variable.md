@@ -1,6 +1,13 @@
 # Variable
 
-[TOC]
+- Toc
+
+1. [Definition of variable(변수의 정의)](#definition-of-variable--------)
+2. [variable(변수)](#variable----)
+3. [identifier(식별자)](#identifier-----)
+4. [assignment(할당)](#assignment----)
+5. [Declaration of variable(변수선언)](#declaration-of-variable------)
+6. [Hoisting(호이스팅)](#hoisting------)
 
 <br>
 
