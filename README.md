@@ -59,25 +59,25 @@
     <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/aria/aria-landmark.md">aria-landmark</a></li>
   </ul>
 </details>
-
 <details>
   <summary>db</summary>
   <ul>
     <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/DB/DB(database).md">db(database)</a></li>
+    <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/DB/backup.md">backup</a></li>
   </ul>
 </details>
+
 
 <details>
   <summary>etc</summary>
   <ul>
-    <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Etc/Favicon.md">favicon</a></li>
+    <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Etc/favicon.md">favicon</a></li>
     <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Etc/opengraph.md">opengraph</a></li>
     <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Etc/seo(searchengine_optimize).md">seo(searchengine_optimize)</a></li>
     <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Etc/webaccibility.md">webaccibility</a></li>
     <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Etc/ASCII&byte.md">ASCII&byte</a></li>
   </ul>
 </details>
-
 <details>
     <summary>poiema_studynote</summary>
     <ul>
@@ -85,5 +85,6 @@
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch4_Variable.md">Ch4_variable</a></li>
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch5_expression%26statement.md">Ch5_expression&statement</a></li>
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch6_Datatype.md">Ch6_Datatype</a></li>
+        <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch7_operator.md#%EC%82%B0%EC%88%A0-%EC%97%B0%EC%82%B0%EC%9E%90">Ch7_operator</a></li>
     </ul>
 </details>
