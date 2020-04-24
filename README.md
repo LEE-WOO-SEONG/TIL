@@ -52,13 +52,13 @@
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/js/ajax.md">ajax</a></li>
     </ul>
 </details>
-
 <details>
   <summary>aria</summary>
   <ul>
     <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/aria/aria-landmark.md">aria-landmark</a></li>
   </ul>
 </details>
+
 <details>
   <summary>db</summary>
   <ul>
@@ -66,7 +66,6 @@
     <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/DB/backup.md">backup</a></li>
   </ul>
 </details>
-
 
 <details>
   <summary>etc</summary>
@@ -78,6 +77,7 @@
     <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Etc/ASCII&byte.md">ASCII&byte</a></li>
   </ul>
 </details>
+
 <details>
     <summary>poiema_studynote</summary>
     <ul>
@@ -86,5 +86,6 @@
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch5_expression%26statement.md">Ch5_expression&statement</a></li>
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch6_Datatype.md">Ch6_Datatype</a></li>
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch7_operator.md#%EC%82%B0%EC%88%A0-%EC%97%B0%EC%82%B0%EC%9E%90">Ch7_operator</a></li>
+    	<li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch8_control-statement.md">Ch8_control-statement</a></li>
     </ul>
 </details>
