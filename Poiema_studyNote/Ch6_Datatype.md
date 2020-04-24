@@ -170,7 +170,7 @@ var str2 = `hello
 ```javascript
 //일반 문자열
 
-var str = `hello\r\n\tworld`;
+var str = `hello\n\ttworld`;
 
 console.log(str);                     //hello
 									    	  world//
