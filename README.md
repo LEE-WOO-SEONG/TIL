@@ -13,7 +13,6 @@
     <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/html/html_table&form.md">html_table&form</a></li>
   </ul>
 </details>
-
 <details>
   <summary>css</summary>
     <ul>
@@ -32,6 +31,7 @@
       <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/CSS/display.none&visibility.hidden.md">display.none&visibility.hidden</a></li>
     </ul>
 </details>
+
 <details>
     <summary>js</summary>
     <ul>
@@ -51,6 +51,7 @@
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/js/ajax.md">ajax</a></li>
     </ul>
 </details>
+
 
 <details>
   <summary>aria</summary>
@@ -77,7 +78,6 @@
     <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Etc/ASCII&byte.md">ASCII&byte</a></li>
   </ul>
 </details>
-
 <details>
     <summary>poiema_studyNote</summary>
     <ul>
@@ -87,6 +87,7 @@
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch6_Datatype.md">Ch6_Datatype</a></li>
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch7_operator.md#%EC%82%B0%EC%88%A0-%EC%97%B0%EC%82%B0%EC%9E%90">Ch7_operator</a></li>
     	<li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch8_control-statement.md">Ch8_control-statement</a></li>
-        <li><a href=""https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch9_typecasting">Ch9_typecasting</a></li>
+        <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch9_typecasting.md">Ch9_typecasting</a></li>
     </ul>
 </details>
+
