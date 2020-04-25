@@ -14,6 +14,16 @@ Toc
 
 4. [반복문](#반복문)
 
+   4-1.[for 문](#for-문)
+
+   4-2.[while 문](#while-문)
+
+   4-3.[do...while 문](#dowhile-문)
+
+5. [break 문](#break-문)
+
+6. [continue 문](#continue-문)
+
 <br>
 
 <br>
@@ -174,6 +184,8 @@ if..else문은 표혁식이 아닌 문이다.
 만약, 일치하는 표현식이 없다면 default문을 실행한다. 
 
 > Q) default문은 옵션으로 사용한다??
+>
+> 아니다. switch 문에서 default문이 명시되어 있지 않다면, 문법적 오류가 발생한다. 일치값이 없을 경우 실행되는 default문을 빠뜨리지 않도록 주의하자.
 
 ```javascript
 switch (표현식) {
@@ -218,4 +230,235 @@ console.log(monthName); // Invalid
 
 ## 반복문
 
- 
+ 반복문은 주어진 조건식의 평가결과가 **true일 경우만** 코드블럭 내의 문을 실행한다. 즉, 주어진 조건식의 평가결과가 false가 되면 문의 실행을 멈추게 된며 false가 될때까지 해당 문을 계속적으로 실행한다.
+
+영문으로는 Loop statement라 표기한다.
+
+- for 문
+- while 문
+- do...while 문
+
+<br>
+
+### for 문
+
+for문은 조건식의 평가결과가 false 일 때까지 코드블럭을 반복실행한다. for문의 문법은 아래와 같으며 변수 선언 시 식별자는 iteration을 의미하는 i를 사용한다.
+
+```javascript
+// for 문 문법
+for(변수선언; 조건식; 변수 값에 대한 증감식) {
+    조건식이 true일 경우 실행될 문;
+}
+
+// for 문 실제사용
+for (var i = 0; i < 10; i++) {
+    console.log(i);             // 0,1,2,3,4,5,6,7,8,9 출력.
+}
+```
+
+#### for문의 실행순서
+
+```javascript
+for (a; b; c) {
+    d
+}
+```
+
+위 예제에서 for문의 실행순서는 a -> b -> d -> c  ->  b -> d -> c -> ... b가 false가 될 때까지 (b -> d -> c)를 반복하며 false가 되면 해당문은 끝나게 된다. 
+
+1. 첫번 째 실행되는 a는 변수선언문으로 가장 처음, 단 한번만 실행된다.
+2. 두번쨰로 선언한 변수의 값이 b의 조건에 부합하는지 비교하는 연산을 실행한다.
+3. b의 조건이 true인 경우 코드블럭내의 구문인 d 를 실행한다.
+4. 구문 실행 후 c 를 실행한다. c는 일반적으로 선언한 변수 값에 대한 증감식이다.
+5. c의 실행으로 값의 변화가 이루어지면 해당 값을 다시 b 의 조건식과 비교한다.
+6. true일 경우 3~5번의 과정이 반복되며 b의 조건이 false가 될 때까지 해당과정을 반복한다. 조건식과의 비교 결과가 false가 되면 문 d의 실행이 이루어지지 않고 그 즉시 for문은 멈추게 된다.
+
+<br>
+
+for문 내에서 선언문(a) ,조건식(b), 증감식(c)는 모두 옵션이다. 그러므로 반드시 사용해야 하는것은 아니다. 하지만 사용하지 않으면 for문은 무한 반복한다.
+
+```javascript
+for () {...}
+```
+
+또한 for문 내에 for 문을 중첩하여 사용할 수 있다.
+
+```javascript
+// 주사위 2개를 던졌을 때, 2 눈의 합의 6이 되는 모든 경우의 수
+
+for (var i = 1; i <= 6; i++) {
+  for (var j = 1; j <= 6; j++) {
+    if (i + j === 6) console.log(`${i},${j}`);  // 1,5 2,4 3,3 4,2 5,1
+  }
+}
+```
+
+위 예제의 경우 i에 초기값 1이 할당되며 해당 값은 6보다 작으므로 코드블럭 내의 if문을 실행한다. 이 때, 실행된 2번 째 if문이 false가 되어 해당 문의 실행이 **끝나면** 증감식 i++를 실행한다. 
+
+for 문 내에 for 문이 들어있을 경우 실행 순서에 유의하도록 하자.
+
+<br>
+
+### while 문
+
+while 문도 for 문과 동일하게 주어진 조건식이 false가 될 때 까지 코드블럭 내의 문을 반복 실행한다. 단, for문과 문을 선언하는 방식이 다르다.
+
+```javascript
+// while 문 문법
+
+변수선언
+while (조건식) {
+    조건이 true일 시 실행할 문;
+    변수값에 대한 증감식;
+}
+// while 문 사용
+var i = 0;
+while (i <= 2){
+    console.log(i);
+    i++;
+}
+```
+
+조건식의 평가결과가 언제나 참이면 무한루프가 된다.
+
+```javascript
+while (true) {...}
+```
+
+#### while 문 무한루프 탈출법
+
+while 문에서 무한루프를 탈출하기 위해서는 코드블럭내에 if문으로 탈출조건을 만든 후 break문을 이용하는 방법이 있다.
+
+```javascript
+var count = 0;
+
+// 무한루프
+while (true) {
+  console.log(count);
+  count++;
+  // count가 3이면 코드 블록을 탈출한다.
+  if (count === 3) break;
+} // 0 1 2
+```
+
+<br>
+
+### do...while 문
+
+do while문은 코드블럭 문을 먼저 실행 하는 `do` 문을 실행 후 while 문을 실행한다. 그렇기 때문에 while의 조건식이 false여도 코드블럭은 최소 1회 실행된다.
+
+```javascript
+var i = 0;
+do {
+    console.log(i);
+    i++;
+} while (i<3);           // 0 1 2
+```
+
+<br>
+
+## break 문
+
+break문은 일반적으로 레이블 문, 반복문이나 switch 조건문에서 코드블럭을 탈출하는데 사용한다. 레이블 문, 반복문, switch 조건문의 코드블럭 이외에 breqk문을 사용하면 syntaxError 가 발생한다. 
+
+> Q) 레이블 문이란?
+>
+> 레이블 문(label statement) 은 식별자가 붙은 문을 말한다. 레이블문은 일반적으로 중첩된 for문에서 외부로 탈출할 때에를 제외하고는 유용하지 않다. 레이블문은 오히려 코드의 가독성을 떨어뜨린다.
+>
+> ```javascript
+> // foo라는 식별자가 붙은 레이블 문
+> Lee : console.log('Lee')
+> 
+> // 레이블 블록문
+> Lee : {
+>     console.log(1);
+>     break Lee;                // 레이블 블록문 탈출 -> 1 만 출력.
+>     consoel.log(2);
+> }
+> ```
+
+- for 문 중첩 시 break 사용
+
+```javascript
+// 내부 for문 탈출
+
+for (var i = 0; i < 3; i++) {
+  for (var j = 0; j < 3; j++) {
+    if (i + j === 2) break               // 내부 for문 탈출
+    console.log('inner ' + j);
+  }
+}
+
+-> 결과값
+inner 0 (i = 0)
+inner 1 (i = 0)
+inner 0 (i = 1)
+
+// 외부 for문 탈출
+outer: for (var i = 0; i < 3; i++) {
+  for (var j = 0; j < 3; j++) {.
+    if (i + j === 3) break outer;         // outer 레이블 블록문 탈출
+    console.log('inner ' + j);
+  }
+}
+
+-> 결과값
+inner 0 (i = 0)
+inner 1 (i = 0)
+```
+
+```javascript
+// 특정 문자열의 위치검색 예제.
+
+var string = 'Hello World.';
+var search = 'l';
+var index;
+
+for (var i = 0; i < string.length; i++) {
+  // 문자열의 개별 문자가 'l'이면
+  if (string[i] === search) {
+    index = i;
+    break;                                  // 반복문 탈출.
+  }
+}
+
+console.log(index);                         // 2
+
+// String.prototype.indexOf 메소드를 통한 문자열 위치 검색.
+console.log(string.indexOf(search)); // 2
+```
+
+> 위 예제에서 indexOf 함수는 원하는 항목이 몇번째 원소인지를 숫자값으로 출력하는 함수이다. String이라는 내장객체? 내에 들어있는 indexOf 함수를 이용해서도 값을 찾을 수 있다.
+
+<br>
+
+## continue 문
+
+continue 문은 반복문의 **코드블록 문의 실행을 현 지점에서 중단**하고 반복문의 **증감식**으로 이동시킬 때 사용한다.
+
+반복문을 탈출할 때 사용하는 break문과는 명확하게 다르다. break문은 현 상태에서 해당 반복문 바깥으로 탈출할 때 사용하는 것이고 continue 문은 반복문 내 코드블럭 실행문을 중단하는 것이며 반복문을 탈출하지는 않고 해당 반복문 내에서 작업을 계속적으로 수행한다.
+
+- for문에서의 continue 문
+
+```javascript
+// l의 문자열이 몇개인지 count하는 예제.
+
+var string = 'Hello World.';
+var search = 'l';
+var count = 0;
+
+// continue 문 미사용
+for (var i = 0; i < string.length; i++) {
+  // 'l'이면 카운트를 증가시킨다.
+  if (string[i] === search) {
+    count++;
+  }
+}
+
+// continue 문 사용
+for (var i = 0; i < string.length; i++) {
+  // 'l'이 아니면 카운트를 증가시키지 않는다.
+  if (string[i] !== search) continue;
+  count++;
+}
+```
