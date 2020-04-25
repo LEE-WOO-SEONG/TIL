@@ -32,7 +32,6 @@
       <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/CSS/display.none&visibility.hidden.md">display.none&visibility.hidden</a></li>
     </ul>
 </details>
-
 <details>
     <summary>js</summary>
     <ul>
@@ -52,6 +51,7 @@
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/js/ajax.md">ajax</a></li>
     </ul>
 </details>
+
 <details>
   <summary>aria</summary>
   <ul>
@@ -60,7 +60,7 @@
 </details>
 
 <details>
-  <summary>db</summary>
+  <summary>DB</summary>
   <ul>
     <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/DB/DB(database).md">db(database)</a></li>
     <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/DB/backup.md">backup</a></li>
@@ -68,7 +68,7 @@
 </details>
 
 <details>
-  <summary>etc</summary>
+  <summary>Etc</summary>
   <ul>
     <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Etc/favicon.md">favicon</a></li>
     <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Etc/opengraph.md">opengraph</a></li>
@@ -79,7 +79,7 @@
 </details>
 
 <details>
-    <summary>poiema_studynote</summary>
+    <summary>poiema_studyNote</summary>
     <ul>
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch1~3_programming%26comprehension.md">Ch1~3_programming&comprehension</a></li>
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch4_Variable.md">Ch4_variable</a></li>
@@ -87,5 +87,6 @@
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch6_Datatype.md">Ch6_Datatype</a></li>
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch7_operator.md#%EC%82%B0%EC%88%A0-%EC%97%B0%EC%82%B0%EC%9E%90">Ch7_operator</a></li>
     	<li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch8_control-statement.md">Ch8_control-statement</a></li>
+        <li><a href=""https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch9_typecasting">Ch9_typecasting</a></li>
     </ul>
 </details>
