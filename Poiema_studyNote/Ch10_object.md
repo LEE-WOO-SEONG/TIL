@@ -147,8 +147,8 @@ var person = {
 
 ```javascript
 var person = {
-  firstName: 'Ung-mo',
-  last-name: 'Lee' // SyntaxError: Unexpected token -
+  firstName: 'wooseong',
+  last-name: 'lee' // SyntaxError: Unexpected token -
 };
 ```
 
@@ -180,7 +180,7 @@ console.log(obj);                     // Object {hello: "world"}
 
 - 이미 존재하는 프로퍼티 key의 중복선언
 
-특정 객체에 존재하는 프로퍼티 키와 동일한 이름으로 선언 시 나중에 선언한 프로퍼티가 먼저 선언한 프로퍼티를 덮어 쓰게 된며 에러가 발생하지는 않는다.
+특정 객체에 존재하는 프로퍼티 키와 동일한 이름으로 선언 시 나중에 선언한 프로퍼티가 먼저 선언한 프로퍼티를 덮어 쓰게 되며 에러가 발생하지는 않는다.
 
 ```javascript
 var naming = {
@@ -239,7 +239,7 @@ console.log(person.name); // Lee
 console.log(person['name']); // Lee
 ```
 
-> 대괄호를 이용한 프로퍼티 접근 시 대괄호 내부의 프로퍼티 key는 반드시 따옴표로 감싸주어야 함을 명심한다.
+> 대괄호를 이용한 프로퍼티 접근 시 대괄호 내부의 프로퍼티 key는 반드시 **따옴표로 감싸주어야 함**을 명심한다.
 >
 > ```javascript
 > var obj = {
@@ -250,7 +250,7 @@ console.log(person['name']); // Lee
 > console.log(obj[hello])      // ReferenceError: hello is not defined
 > ```
 >
-> 상기와 같은 경우는 에러를 발생시키나, 객체에 존재하지 않는 프로퍼티에 접근시에는 undefined를 반환한다.
+> 상기와 같은 경우는 에러를 발생시키나, 객체에 존재하지 않는 프로퍼티에 접근시에는 **undefined**를 반환한다.
 >
 > ```javascript
 > var person = {
