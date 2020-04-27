@@ -63,9 +63,9 @@ console.log(typeof x, x)  // number 10
 
 명시적인 문자열 타입변환 방법은 3가지가 있다.
 
-1. String 생성자 함수를 new 연산자 없이 호출.
-2. Object.prototype.toString 메소드를 사용.
-3. 문자열 연결 연산자를 사용.
+1. String 생성자 함수를 new 연산자 없이 호출. (본연의 역할은 아님, 잘안씀.)
+2. Object.prototype.toString 메소드를 사용. (특정값을 객체로 만들어야 함. 불편함.)
+3. 문자열 연결 연산자를 사용. (추천방법)
 
 ```javascript
 // 1번 방법
@@ -98,7 +98,7 @@ console.log(true + '');           // 'true'
 1. Number 생성자 함수를 new 연산자 없이 호출.
 2. parseInt, parseFloat 함수를 사용.
 3.  (+) 단항 산술 연산자를 이용.
-4.  이항 산술 연산자 (*, /, %)를 이용.
+4.  이항 산술 연산자 (*, /, %,-)를 이용.
 
 ```javascript
 // 1번 방법
