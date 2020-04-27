@@ -42,11 +42,11 @@
 
 - 값의 변경이 불가능한 경우(원시타입)
 
-![image-20200427212530814](C:\Users\112606\AppData\Roaming\Typora\typora-user-images\image-20200427212530814.png)	
+  ![image](https://user-images.githubusercontent.com/62285872/80380956-319fe800-88db-11ea-89a3-f8ae9c2b3f6b.png)	
 
 - 값의 변경이 가능한 경우
 
-  ![image-20200427212743019](C:\Users\112606\AppData\Roaming\Typora\typora-user-images\image-20200427212743019.png)	
+  ![image](https://user-images.githubusercontent.com/62285872/80381037-4f6d4d00-88db-11ea-9a53-508f207fef45.png)
 
   <br>
 
@@ -110,11 +110,11 @@ console.log(copy);  // ?
 
 새로운 변수에 원시값을 갖는 변수를 할당하면 할당받는 변수에는 할당되는 변수의 원시값이 **복사**되어 새롭게 할당된다. 기존 변수가 가리키던 공간을 동일하게 가리키는 것이 아니라 똑같은 값을 그대로 복사하여 다른 메모리공간에 갖게되는 것이다. 그렇기 때문에 위 예제의 값은 100이 아닌 80이 되며, 이를 **값에 의한 전달**이라 한다.
 
-![image-20200427214735119](C:\Users\112606\AppData\Roaming\Typora\typora-user-images\image-20200427214735119.png)	
+![image](https://user-images.githubusercontent.com/62285872/80381118-6a3fc180-88db-11ea-9426-25a425737793.png)	
 
 하지만 위의 설명했던 바와는 다르게 새로운 변수에 원시값을 갖는 변수를 할당하는 시점에는 두 변수가 같은 메모리공간에 있는 원시값을 참조하다가, 어느 한쪽의 변수에 재 할당이 이루어졌을 때 비로소 새로운 메모리 공간에 재 할당된 값을 저장하도록 동작할 수도 있다.
 
-![image-20200427215039355](C:\Users\112606\AppData\Roaming\Typora\typora-user-images\image-20200427215039355.png)		
+![image-20200427230536302](C:\Users\112606\AppData\Roaming\Typora\typora-user-images\image-20200427230536302.png)			
 
 즉, 자바스크립트에서 변수할당에 의한 변수 값의 전달은 2가지 방식으로 해석이 가능하다.
 
@@ -155,7 +155,7 @@ var person = {
 
 하지만 객체를 할당한 변수가 기억하는 메모리 주소를 통해 메모리 공간에 접근하게 되면 **참조값**에 접근할 수 있다. 참조값은 생성된 객체가 저장된 메모리 공간의 주소 그 자체이다.
 
-![image-20200427221557253](C:\Users\112606\AppData\Roaming\Typora\typora-user-images\image-20200427221557253.png)		
+![image](https://user-images.githubusercontent.com/62285872/80381293-b7bc2e80-88db-11ea-81e7-2581b9517e4c.png)
 
 그렇기 때문에 "변수는 00의 값을 갖는다" 라고 표현하는 원시 값과 다르게 객체값은 "변수는 객체를 **참조**하고 있다 혹은 객체를 가리키고 있다" 라고 표현한다.
 
@@ -175,7 +175,9 @@ person.gender = 'male';
 console.log(person); // {name: "Kim", gender: "male"}
 ```
 
-![image-20200427222812382](C:\Users\112606\AppData\Roaming\Typora\typora-user-images\image-20200427222812382.png)	
+​	![image](https://user-images.githubusercontent.com/62285872/80381661-3913c100-88dc-11ea-9001-c75f06a6ee8c.png)
+
+
 
 > 얕은복사(shallow copy)와 깊은복사(deep copy)
 >
@@ -203,7 +205,7 @@ var copy = person;
 
 객체를 가리키는 변수를 다른 변수에 할당하면 원본의 **참조값**이 복사되어 전달된다. 이를 참조에 의한 전달이라 한다.
 
-![image-20200427224406958](C:\Users\112606\AppData\Roaming\Typora\typora-user-images\image-20200427224406958.png)	
+![image](https://user-images.githubusercontent.com/62285872/80381556-0cf84000-88dc-11ea-9b34-83be8fddb24c.png)		
 
  그림처럼 원본 person를 사본 copy에 할당하면 원본 person의 참조 값을 복사하여 copy에 저장한다. 이때 원본 person와 사본 copy는 메모리 주소는 다르지만 동일한 참조 값을 갖는다. 다시 말해, 원본 person와 사본 copy 모두 동일한 객체를 가리키고 있다. 이것은 두개의 식별자가 하나의 객체를 공유한다는 것을 의미한다. 따라서 원본 또는 사본 어떤 한쪽에서 **객체를 변경**(변수에 새로운 객체를 재할당하는 것이 아니라 객체의 프로퍼티 값 변경 또는 추가, 삭제)하면 **서로 영향을 주고 받는다.**
 
