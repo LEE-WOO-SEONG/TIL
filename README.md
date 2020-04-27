@@ -32,8 +32,6 @@
       <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/CSS/display.none&visibility.hidden.md">display.none&visibility.hidden</a></li>
     </ul>
 </details>
-
-
 <details>
     <summary>js</summary>
     <ul>
@@ -59,7 +57,6 @@
     <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/aria/aria-landmark.md">aria-landmark</a></li>
   </ul>
 </details>
-
 <details>
   <summary>DB</summary>
   <ul>
@@ -88,7 +85,9 @@
     	<li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch8_control-statement.md">Ch8_control-statement</a></li>
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch9_typecasting.md">Ch9_typecasting</a></li>
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch10_object.md">Ch10_object</a></li>
+        <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch11_difference-of-primitive&objecttype.md">Ch11_difference-of-primitive&objecttype</a></li>
     </ul>
 </details>
+
 
 
