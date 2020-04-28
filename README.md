@@ -86,6 +86,7 @@
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch9_typecasting.md">Ch9_typecasting</a></li>
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch10_object.md">Ch10_object</a></li>
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch11_difference-of-primitive&objecttype.md">Ch11_difference-of-primitive&objecttype</a></li>
+        <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch12_function.md">Ch12_function</a></li>
     </ul>
 </details>
 
