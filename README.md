@@ -13,7 +13,6 @@
     <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/html/html_table&form.md">html_table&form</a></li>
   </ul>
 </details>
-
 <details>
   <summary>css</summary>
     <ul>
@@ -87,6 +86,9 @@
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch10_object.md">Ch10_object</a></li>
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch11_difference-of-primitive&objecttype.md">Ch11_difference-of-primitive&objecttype</a></li>
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch12_function.md">Ch12_function</a></li>
+        <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch13_scope.md">Ch13_scope</a></li>
+        <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch14_problem-of-globalvariable.md">Ch14_problem-of-globalvariable</a></li>
+        <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch15_keyword-let,const.md">Ch15_keyword-let,const</a></li>
     </ul>
 </details>
 
