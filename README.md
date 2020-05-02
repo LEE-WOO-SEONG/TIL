@@ -89,8 +89,10 @@
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch13_scope.md">Ch13_scope</a></li>
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch14_problem-of-globalvariable.md">Ch14_problem-of-globalvariable</a></li>
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch15_keyword-let,const.md">Ch15_keyword-let,const</a></li>
+    <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch16_property-attribute.md">Ch16_property-attribute</a></li>
     </ul>
 </details>
+
 
 
 
