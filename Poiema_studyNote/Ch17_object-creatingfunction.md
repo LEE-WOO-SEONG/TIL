@@ -191,7 +191,7 @@ function add(x, y) {
 const add2 = new add(1,2);
 // 일반 함수
 const add3 = add(1,2);
-add {constructor: Object}
+
 console.log(add2) // add {constructor: Object}
 console.log(add3) // 3
 ```
@@ -300,7 +300,7 @@ foo.method(); // 10
 
 함수 객체는 일반 객체가 가지고 있는 내부 슬롯과 내부 메소드는 물론, 함수로서 동작하기 위해 함수 객체만을 위한 [[Environment\]], [[FormalParameters]] 등의 내부 슬롯과 [[Call]], [[Construct]]와 같은 내부 메소드를 추가적으로 가지고 있다.
 
-<em>함수가  **일반함수**로서 호출되면 삼수 객체의 내부메소드 [[Call]]이 호출되고 new 연산자와 함께 **생성자 함수**로서 호출되면 내부메소드 [[Construct]]가 호출된다.</em>
+<em>함수가  **일반함수**로서 호출되면 함수 객체의 내부메소드 [[Call]]이 호출되고 new 연산자와 함께 **생성자 함수**로서 호출되면 내부메소드 [[Construct]]가 호출된다.</em>
 
 ```javascript
 function foo() {}
@@ -367,7 +367,7 @@ non-constructor인 함수 객체는 내부 메소드 [[Construct]]를 갖지 않
 
 일반함수와 생성자 함수에 외부적인 형식의 차이는 없다. 다만 new 연산자와 함께 함수를 호출하면 해당함수는 생성자 함수로 동작할 뿐이다.
 
-즉, new 연산자와 함께 함수를 호출 함수 객체의 내부메소드 [[Call]]이 아니라 [[Construct]]가 호출된다.
+즉, new 연산자와 함께 함수를 호출하면 함수 객체의 내부메소드 [[Call]]이 아니라 [[Construct]]가 호출된다.
 
 ```javascript
 // 생성자 함수
@@ -402,7 +402,7 @@ circle.getDiameter();
 
 ES6에서는 일반함수로 호출했다 할지라도 생성자함수로 호출할 수 있는 방식인 `new.target`을 지원한다. `new.target`은 this와 유사하게 모든 함수내부에서 암묵적인 지역변수와 같이 사용되며 메타 프로퍼티라고 부른다. 단, **IE** 에서는 `new.target`을 지원하지 않으니 주의하여야 한다.
 
-함수 내부에서 `new.target`을 사용하면 new 연산자와 함꼐 함수가 호출되었는지 확인이 가능하다.
+함수 내부에서 `new.target`을 사용하면 new 연산자와 함께 함수가 호출되었는지 확인이 가능하다.
 
 - new 연산자와 함께 호출된 함수 내부의 new.target 값 : 함수 자신
 - new 연산자 없이 호출된 함수 내부의 new.target 값 : undefined
@@ -455,7 +455,7 @@ const circle = Circle(5);
 console.log(circle.getDiameter()); // 10
 ```
 
-내장 생성자 함수 중 Object 또는 Function 생성자 함수는 new 연산자 없이 호출해도 new 연산자와 함께 호출했을 때와 동일하게 동작한다.
+내장 생성자 함수 중 Object 또는 Function 생성자 함수는 new 연산자 없이 호출해도 new 연산자와 함께 호출했을 때와 <strong>동일하게 동작한다.</strong>
 
 ```javascript
 let obj = new Object();
