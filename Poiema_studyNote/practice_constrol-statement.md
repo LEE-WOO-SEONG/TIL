@@ -195,3 +195,29 @@ for (let i = 0; i < 5; i++) {
 }
 ```
 
+```javascript
+// 선형검색
+
+function linearSearch(array = [], target) {
+  let index = -1;  // return여러번 사용하는게 불편해서 변수 만들어줌.
+  const length = array.length;   // 조건식 변수 선언.
+  for (let i = 0; i < length; i++) { // 조건식이 배열의 길이만큼 반복됨.
+    if (array[i] === target) index = i;
+  }
+  return index;
+}
+
+console.log(linearSearch([1, 2, 3, 4, 5, 6], 1)); // 0
+console.log(linearSearch([1, 2, 3, 4, 5, 6], 3)); // 2
+console.log(linearSearch([1, 2, 3, 4, 5, 6], 5)); // 4
+console.log(linearSearch([1, 2, 3, 4, 5, 6], 6)); // 5
+console.log(linearSearch([1, 2, 3, 4, 5, 6], -1)); // -1
+console.log(linearSearch([1, 2, 3, 4, 5, 6], 0)); // -1
+console.log(linearSearch([1, 2, 3, 4, 5, 6], 7)); // -1
+```
+
+```javascript
+// 이진검색
+
+```
+
