@@ -91,6 +91,10 @@
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch15_keyword-let,const.md">Ch15_keyword-let,const</a></li>
     <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch16_property-attribute.md">Ch16_property-attribute</a></li>
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch17_object-creatingfunction.md">Ch17_object-creatingfunction</a></li>
+            <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch18_functionproperty.md">Ch18_functionproperty</a></li>
+                <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch19_Prototype.md">Ch19_Prototype</a></li>
     </ul>
 </details>
+
+
 
