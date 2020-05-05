@@ -14,9 +14,9 @@
    
    2-4. [name 프로퍼티](#name-프로퍼티)
    
-   2-5. [_ _ proto _ _ 접근자 프로퍼티](#_ _ proto _ _-접근자 프로퍼티)
+   2-5. [proto 접근자 프로퍼티](#_ _ proto _ _-접근자 프로퍼티)
    
-   2-6. [prototype 프로퍼티](#prototype 프로퍼티)
+   2-6. [prototype 프로퍼티](#prototype-프로퍼티)
 
 <br>
 
