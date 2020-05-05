@@ -14,7 +14,7 @@
    
    2-4. [name 프로퍼티](#name-프로퍼티)
    
-   2-5. [proto 접근자 프로퍼티](#_ _ proto _ _-접근자 프로퍼티)
+   2-5. [proto 접근자 프로퍼티](#proto-접근자-프로퍼티)
    
    2-6. [prototype 프로퍼티](#prototype-프로퍼티)
 
@@ -259,7 +259,7 @@ console.log(bar.name); // bar
 
 <br>
 
-### _ _ proto _ _ 접근자 프로퍼티
+### proto 접근자 프로퍼티
 
 모든 객체는 [[Prototype]] 이라는 내부슬롯을 갖는다. [[Prototype]] 내부슬롯은 객체 지향 프로그래밍의 **상속**을 구현하는 <strong>프로토타입 객체</strong>를 가리킨다.
 
