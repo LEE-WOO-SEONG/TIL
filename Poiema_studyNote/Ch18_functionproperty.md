@@ -9,6 +9,14 @@
    2-1. [arguments 프로퍼티](#arguments-프로퍼티)
 
    2-2. [caller 프로퍼티](#caller-프로퍼티)
+   
+   2-3. [length 프로퍼티](#length-프로퍼티)
+   
+   2-4. [name 프로퍼티](#name-프로퍼티)
+   
+   2-5. [_ _ proto _ _ 접근자 프로퍼티](#_ _ proto _ _-접근자 프로퍼티)
+   
+   2-6. [prototype 프로퍼티](#prototype 프로퍼티)
 
 <br>
 
