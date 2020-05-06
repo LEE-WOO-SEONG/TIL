@@ -295,4 +295,4 @@ console.log((function() {}).hasOwnProperty('prototype')); // true
 console.log(({}).hasOwnProperty('prototype')); // false
 ```
 
-prototype 프로퍼티는 함수가 객체를 생성하는 **생성자함수**로 사용될 때, 생성자 함수가 생성할 **인스턴스**의 프로토타입 객체를 가리킨다. 즉, 생성자함수를 가리킨다.
+prototype 프로퍼티는 함수가 객체를 생성하는 **생성자함수**로 사용될 때, 생성자 함수가 생성할 **인스턴스**의 프로토타입 객체를 가리킨다.
