@@ -93,8 +93,11 @@
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch17_object-creatingfunction.md">Ch17_object-creatingfunction</a></li>
             <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch18_functionproperty.md">Ch18_functionproperty</a></li>
                 <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch19_Prototype.md">Ch19_Prototype</a></li>
+        <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch20_strict mode.md">Ch20_strict mode</a></li>
+        <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch21_builtin-object.md">Ch21_builtin-object</a></li>
     </ul>
 </details>
+
 
 
 
