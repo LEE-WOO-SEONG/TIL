@@ -3,11 +3,18 @@
 - Toc
 
 1. [자바스크립트 객체의 분류](#자바스크립트-객체의-분류)
+
 2. [표준 빌트인 객체](#표준-빌트인-객체)
+
 3. [원시값과 래퍼객체](#원시값과-래퍼객체)
+
 4. [전역객체](#전역객체)
 
+   4-1. [빌트인 전역 프로퍼티](#빌트인-전역-프로퍼티)
 
+   4-2. [빌트인 전역함수](#빌트인-전역함수)
+
+   4-3. [암묵적 전역](#암묵적-전역)
 
 <br>
 
@@ -203,7 +210,7 @@ console.log(window.foo); // undefined
 
 빌트인 전역 프로퍼티는 전역객체의 프로퍼티를 의미한다. 주로 애플리케이션 전역에서 사용하는 값을 제공한다.
 
-### Infinity
+#### Infinity
 
 Infinity 프로퍼티는 양/음의 무한대를 나타내는 숫자값 Infinity를 갖는다.
 
@@ -221,7 +228,7 @@ console.log(typeof Infinity); // number
 
 <br>
 
-### NaN
+#### NaN
 
 NaN 프로퍼티는 숫자가아님(Not-a-Number)을 나타내는 숫자값 NaN을 갖는다. NaN 프로퍼티는 Number.NaN 프로퍼티와 같다.
 
@@ -235,7 +242,7 @@ console.log(typeof NaN);    // number
 
 <br>
 
-### undefined
+#### undefined
 
 undefined 프로퍼티는 원시타입의 undefined를 값으로 갖는다.
 
@@ -253,7 +260,7 @@ console.log(typeof undefined); // undefined
 
 빌트인 전역함수는 애플리케이션 전역에서 호출할 수 있는 빌트인 함수로서 전역객체의 메소드이다.
 
-### eval
+#### eval
 
 **문자열** 형태로 매개변수에 전달된 코드를 **런타임에** 동적으로 평가하고 실행하여 결과값을 반환한다. 전달된 문자열 코드가 여러개의 문으로 이루어져 있다면 모든문을 실행 후 마지막 결과값을 반환한다.
 
@@ -320,7 +327,7 @@ eval 함수를 통해 사용자로부터 입력 받은 콘텐츠(untrusted data)
 
 <br>
 
-### isFinite
+#### isFinite
 
 매개변수에 전달된 값이 정상적인 유한수인지 검사하여 그 결과를 **불리언** 타입으로 반환한다. <strong>매개변수에 전달된 값이 숫자가 아닌 경우, 숫자로 타입을 변환한 후 검사를 수행한다.</strong>
 
@@ -338,7 +345,7 @@ console.log(isFinite(null));      // true: null → 0
 
 <br>
 
-### isNaN
+#### isNaN
 
 매개변수에 전달된 값이 NaN인지 검사하여 그 결과를 **불리언** 타입으로 반환한다.<strong>매개변수에 전달된 값이 숫자가 아닌 겨우, 숫자로 타입을 변환한 후 검사를 수행한다.</strong>
 
@@ -371,7 +378,7 @@ console.log(isNaN(new Date().toString()));  // true:  String → NaN
 
 <br>
 
-### parseFloat
+#### parseFloat
 
 매개변수에 전달된 **문자열**을 부동소수점 숫자(floating point number)로 변환하여 반환한다.
 
@@ -389,7 +396,7 @@ console.log(parseFloat(' 60 ')); // 60
 
 <br>
 
-### parseInt
+#### parseInt
 
 첫번째 매개변수에 전달된 **문자열**을 정수형 **숫자**(Integer)로 해석하여 변환한다. 두번째 매개변수에는 진법을 나타내는 기수를 지정한다. 만약 기수를 지정하지않으면 10진수로 해석한다. 
 
@@ -492,7 +499,7 @@ console.log(parseInt(' 60 ')); // 60
 
 <br>
 
-### encodeURI / decodeURI
+#### encodeURI / decodeURI
 
 encodeURI 함수는 매개변수로 전달된 URI(Uniform Resource Identifier)를 인코딩한다. URI는 인터넷에 있는 자원을 나타내는 유일한 주소를 말한다. URI의 하위개념으로 URL / URN 등이 있다.
 
@@ -552,7 +559,7 @@ console.log(dec);
 
 <br>
 
-### encodeURIComponent / decodeURIComponent
+#### encodeURIComponent / decodeURIComponent
 
 encodeURIComponenent 함수는 매개변수로 전달된 URI의 구성요소를 인코딩한다.
 
