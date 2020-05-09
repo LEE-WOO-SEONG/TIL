@@ -95,8 +95,10 @@
                 <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch19_Prototype.md">Ch19_Prototype</a></li>
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch20_strict mode.md">Ch20_strict mode</a></li>
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch21_builtin-object.md">Ch21_builtin-object</a></li>
+    <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch22_this.md">Ch22_this</a></li>
     </ul>
 </details>
+
 
 
 
