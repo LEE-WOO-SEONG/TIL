@@ -12,7 +12,7 @@
 
    2-3. [생성자 함수로서 호출](#생성자-함수로서-호출)
 
-   2-4. [Function.prototype.apply/call/bind 메소드에 의한 간접호출](#Function.prototype.applycallbind-메소드에-의한-간접호출)
+   2-4. [Function.prototype.apply/call/bind 메소드에 의한 간접호출](#Functionprototypeapplycallbind-메소드에-의한-간접호출)
 
 3. [함수호출 방식에 따른 this 바인딩 값](#함수호출-방식에-따른-this-바인딩-값)
 
