@@ -521,7 +521,7 @@ foo(20); // 42
 
 bar 함수코드 평가에 의한 실행컨텍스트 및 렉시컬환경의 생성과정은 foo 함수코드와 동일하다.
 
-![image-20200510201818639](C:\Users\112606\AppData\Roaming\Typora\typora-user-images\image-20200510201818639.png)
+![image](https://user-images.githubusercontent.com/62285872/81498479-3499d000-9300-11ea-9a94-7d7fcebb6ae1.png)
 
 <br>
 
