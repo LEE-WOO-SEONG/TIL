@@ -40,7 +40,7 @@ function binarySearch(array, target) {
       index = mid;
       break;
     } else if (target > array[mid]) start = mid + 1;
-    else end = mid - 1;
+    else if (target < array[mid]) end = mid - 1;
   }
   // }
   return index;
