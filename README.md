@@ -97,8 +97,10 @@
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch21_builtin-object.md">Ch21_builtin-object</a></li>
     <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch22_this.md">Ch22_this</a></li>
     <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch23_execution-context.md">Ch23_execution-context</a></li>
+        <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch24_Closure.md">Ch24_Closure</a></li>
     </ul>
 </details>
+
 
 
 
