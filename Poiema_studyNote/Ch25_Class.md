@@ -3,10 +3,40 @@
 - Toc
 
 1. [클래스는 프로토타입의 문법적 설탕인가?](#클래스는-프로토타입의-문법적-설탕인가)
+
 2. [클래스 정의](#클래스-정의)
+
 3. [클래스 호이스팅](#클래스-호이스팅)
+
 4. [인스턴스 생성](#인스턴스-생성)
+
 5. [메소드](#메소드)
+
+   5-1. [constructor](#constructor)
+
+   5-2. [프로토타입 메소드](#프로토타입-메소드)
+
+   5-3. [정적 메소드](#정적-메소드)
+
+   5-4. [정적 메소드와 프로포토타입 메소드의 차이](#정적-메소드와-프로포토타입-메소드의-차이)
+
+   5-5. [클래스에서 정의한 메소드의 특징](#클래스에서-정의한-메소드의-특징)
+
+6. [클래스의 인스턴스 생성과정](#클래스의-인스턴스-생성과정)
+
+7. [프로퍼티](#프로퍼티)
+
+   7-1. [인스턴스 프로퍼티](#인스턴스-프로퍼티)
+
+   7-2. [접근자 프로퍼티](#접근자-프로퍼티)
+
+   7-3. [클래스 필드 정의제안](#클래스-필드-정의제안)
+
+   7-4. [private 필드 정의제안](#private-필드-정의제안)
+
+   7-5. [static 필드 정의제안](#static-필드-정의제안)
+
+8. [상속에 의한 클래스 확장](#상속에-의한-클래스-확장)
 
 <br>
 
@@ -191,4 +221,665 @@ const you = new MyClass();
 <br>
 
 ## 메소드
+
+### constructor
+
+constructor는 <strong>인스턴스를 생성하고 초기화</strong>하기 위한 특수한 메소드이다. constructor는 이름을 변경할 수 없다.
+
+```js
+class Person {
+    constructor(name) {
+        this.name = name;
+    }
+}
+```
+
+![image](https://user-images.githubusercontent.com/62285872/81883752-0272c180-95d1-11ea-8adf-6f0de4dd9428.png)		
+
+클래스는 평가되어 **함수객체**가 된다.  위 콘솔창을 확인 해 보면 클래도 함수 객체의 고유 프로퍼티를 모두 가지고 있다. 또한 함수와 동일하게 프로토타입과 연결되어 있으며 자신의 스코프 체인을 구성한다.
+
+constuctor로 사용할 수 있는 함수객체가 가지고 있는 prototype 프로퍼티가 가리키는 프로토타입 객체의 constructor 프로퍼티가 클래스 자신을 가리키고 있다. 이는 클래스가 인스턴스를 생성하는 <strong>생성자 함수</strong>라는 것을 의미한다. 즉, new 연산자와 함께 클래스를 호출하면 클래스는 인스턴스를 생성한다.
+
+> 클래스의 constructor 메소드와 Person.prototype.constructor는 다르다.
+>
+> 클래스 내부의 constructor 메소드는 미래에 생성될 인스턴스에 관한 정보를 담고 있으며 Person.prototype의 constructor 프로퍼티는 생성자 함수인 클래스 자신을 가리키니 혼동하지 않도록 한다.
+
+constructor는 메소드로 해석되는 것이 아니라 클래스가 평가되어 생성한 **함수객체** 코드의 일부가 된다. 즉, 클래스 정의가 평가되면 constructor의 기술된 동작을 하는 함수객체가 생성된다.
+
+클래스의 constructor는 생성자 함수와 유사하지만 차이가 있다.
+
+- 클래스 내에 construcor는 최대 1개만 존재할 수 있다.
+
+- constructor는 생략 할 수 있다. 만약 생략할 경우 클래스에는 default constructor 가 암묵적으로 정의된다.
+
+  ```js
+  class Person {
+      constuctor() {}
+  }
+  
+  const me = new Person();
+  console.log(me);   // Person {}
+  ```
+
+- 프로퍼티가 추가되어 초기화된 인스턴스를 생성하려면 constructor 내부에서 this에 인스턴스 프로퍼티를 추가해야 한다.
+
+  ```js
+  class Person {
+      constructor(name, age) {
+          this.name = name;
+          this.age = age;
+      }
+  }
+  
+  const me = new Person('lee', 20);
+  console.log(me);   // Person { name : 'lee', age : 20 }
+  ```
+
+<br>
+
+constructor는 생략이 가능하나, 생략할 경우 암묵적으로 생성된 default constructor로 인스턴스를 생성 시 초기화가 불가능한 빈 객체만 생성하게 된다. 때문에 인스턴스를 초기화 하려면 constructor를 생략해서는 안된다.
+
+- constructor는 생성자함수와 동일하게 암묵적으로 빈 객체를 생성 후 해당 객체를 this에 바인딩한다. 명시적 return 문이 없을 경우 this를 암묵적으로 반환하나, return문이 존재하게 되면 명시된 반환값을 반환하게 된다. 이는 인스턴스를 생성할 목적인 클래스의 의도와 맞지 않는다. 때문에 <strong>constructor에 반환문을 사용하지 않도록 한다.</strong>
+
+<br>
+
+### 프로토타입 메소드
+
+생성자 함수로 인스턴스를 생성하는 경우, 프로토타입 메소드를 생성하기 위해서는 명시적으로 프로토타입에 메소드를 추가하여야 했다.
+
+<strong>클래스는 이와다르게 클래스 몸체에 정의된 메소드가 프로토타입 메소드가 된다.</strong>
+
+```js
+// 생성자 함수
+function Person(name) {
+    this.name = name;
+}
+Person.prototype.sayHi = function () {
+    console.log(`hi, my name is ${this.name}`)
+};
+
+// 클래스
+class Person {
+    constructor(name) {
+        this.name = name;
+    }
+    sayHi() {
+        console.log(`hi, my name is ${this.name}`)
+    }
+}
+```
+
+또한 생성자 함수와 마찬가지로 클래스가 생성한 인스턴스는 프로토타입 체인의 일원이 된다.
+
+```js
+class Person {
+    constructor(name) {
+        this.name = name;
+    }
+    sayHi() {
+        console.log(`hi, my name is ${this.name}`)
+    }
+}
+
+const me = new Person('lee');
+
+me.sayHi(); // Hi! My name is lee
+
+Object.getPrototypeOf(me) === Person.prototype // true
+me instanceof Person // true
+
+Object.getPrototypeOf(Person.prototype) === Object.prototype // true
+me instanceof Object // true
+
+me.constructor === Person // true
+```
+
+![image](https://user-images.githubusercontent.com/62285872/81887196-8af56000-95d9-11ea-95cd-cbc00cfb5a94.png)
+
+이처럼 클래스를 통해 생성한 인스턴스에도 프로토타입 체인이 적용된다. 결국 클래스도 생성자 함수처럼 프로토타입 기반의 객체 생성 메커니즘 인 것이다.
+
+<br>
+
+### 정적 메소드
+
+정적 메소드란 인스턴스를 생성하지 않아도 호출할 수 있는 메소드를 말한다.
+
+생성자 함수는 자기자신인 생성자 함수에 대한 프로퍼티의 추가로 정적메소드의 생성이 가능하다.
+
+<strong>반면 클래스는 클래스 몸체에서 `static` 키워드를 붙여 정의된 메소드가 정적메소드가 된다.</strong>
+
+```js
+// 생성자 함수
+function Person(name) {
+    this.name = name;
+}
+Person.sayHi = function () {
+    console.log(`hi, my name is ${this.name}.`)
+};
+
+// 클래스
+class Person {
+    constructor(name) {
+        this.name = name;
+    }
+    static sayHi() {
+        console.log(`hi.`)
+    }
+}
+```
+
+![image](https://user-images.githubusercontent.com/62285872/81887851-04da1900-95db-11ea-99c7-e2c135a864d4.png)
+
+클래스는 **함수객체**로 평가되므로 자신의 프로퍼티, 메소드를 소유할 수 있으며, 정적 메소드는 클래스 자신의 메소드가 된다. 이러한 정적 메소드는 클래스가 가지는 프로퍼티 이므로 인스턴스를 생성하지 않아도 참조가 가능하다.
+
+정적 메소드는 클래스로 호출한다.
+
+```js
+Person.sayHi();  // hi.
+```
+
+<br>
+
+### 정적 메소드와 프로포토타입 메소드의 차이
+
+정적 메소드와 프로토타입 메소드의 차이점
+
+- 정적 메소드와 프로토타입 메소드는 자신이 속해 있는 <strong>프로토타입 체인</strong>이 다르다.
+- 정적 메소드는 **클래스**로, 프로토타입 메소드는 **인스턴스**로 호출이 가능하다.
+- 정적 메소드는 <strong>인스턴스의 프로퍼티를 참조할 수 없지만</strong> 프로토타입 메소드는 가능하다.
+
+```js
+class Square {
+    static area(width, height) {
+        return width * height;
+    }
+}
+console.log(Square.area(10,10)); // 100
+
+const square = new Square();
+square.area() // TypeError: square.area is not a function
+```
+
+정적 메소드인 `area`는 인스턴스의 프로퍼티를 인수로 참조하지 않는다. 이럴 경우 정적메소드를 사용하며, 만약 인스턴스의 프로퍼티를 사용해야 한다면 프로토타입 메소드를 사용해야 한다.
+
+```js
+class Square {
+    constructor(width, height) {
+        this.width = width;
+        this.height = height;
+    }
+    
+    area() {
+        return this.width * this.height;
+    }
+}
+
+const square = new Square(10, 10);
+console.log(square.area());  // 100
+```
+
+메소드 내부에서 인스턴스 프로퍼티의 참조가 필요하면 this를 사용해야 하며 이러한 경우, 프로토타입 메소드로 정의해야 한다. 물론 메소드 내부에서 this를 사용하지 않더라도 프로토타입 메소드로 정의가 가능하나, 프로토타입 메소드는 반드시 인스턴스를 생성한 다음 인스턴스로 호출해야 하므로 this를 사용하지 않는 메소드는 정적 메소드로 정의하는 것이 좋다.
+
+표준 빌트인 객체인 Math/ Number / JSON / Object / Reflect 등은 다양한 정적 메소드를 가지고 있다. 이들 정적 메소드는 애플리케이션의 전역에서 사용할 유틸리티함수이다.
+
+프로토타입 메소드는 평가하고싶은 객체를 호출하여 메소드를 사용하는 데 반해 정적 메소드는 평가하고 싶은 값를 인수로 준다.
+
+```js
+// 정적 메소드
+Math.max(1, 2, 3);  // 3
+Number.isNaN(NaN);  // true
+JSON.stringify({ a: 1 }) // "{"a": 1 }"
+Object.is({}, {});  // false
+Reflect.has({ a : 1}, 'a') // true
+
+// 프로토타입 메소드
+me.hasOwnProperty('name');
+```
+
+
+
+이처럼 클래스 또는 생성자 함수를 하나의 [네임스페이스](https://ko.wikipedia.org/wiki/이름공간)(Namespace)로 사용하여 정적 메소드를 모아 놓으면 이름충돌 가능성을 줄여주고 관련있는 함수들을 구조화 할 수 있는 효과가 있다.
+
+이 같은 이유로 애플리케이션 전역에서 사용할 유틸리티 함수를 전역함수로 정의하지 않고 정적메소드로 구조화 한다.
+
+> ES6에 추가된 표준빌트인 객체 Number의 정적 메소드
+>
+> ES6에서는 빌트인 전역함수인 isFinite / isNaN / parseInt / parseFloat 등을 표준 빌트인 객체인 Number의 정적메소드로 추가 구현하였다. Number의 정적메소드는 빌트인 전역함수보다 엄격하다.
+>
+> ![image](https://user-images.githubusercontent.com/62285872/81895397-0ca2b900-95ed-11ea-882c-6acd75801a67.png)
+
+<br>
+
+### 클래스에서 정의한 메소드의 특징
+
+1. function 키워드를 생략한 <strong>메소드 축약표현</strong>을 사용한다.
+2. 객체 리터럴과는 다르게 클래스에 메소드를 정의할 때는 콤마가 필요없다.
+3. 암묵적으로 <strong>strict모드로 실행된다.</strong>
+4. for...in 문이나 Object.keys 메소드 등으로 열거할 수 없다. 즉, 프로퍼티의 어트리뷰트 중 [[Enumerable]] 내부슬롯의 값이 false 이다.
+5. 내부메소드 [[Construct]]를 갖지 않는 non-constructor이다.(일반함수가 아닌 메소드이기 때문.) 따라서 new 연산자와 함께 호출할 수 없다.
+
+<br>
+
+## 클래스의 인스턴스 생성과정
+
+new 연산자와 함께 클래스를 호출하면 클래스 내부 메소드인 [[Construct]]가 호출된다. 클래스는 new 연산자 없이 호출할 수 없다.
+
+- 인스턴스 생성과 this 바인딩
+
+new 연산자와 함께 클래스를 호출하면 construct의 내부코드가 실행되기에 앞서 암묵적으로 빈 객체가 생성된다. 동시에 클래스가 생성한 빈 객체인 인스턴스는 프로토타입으로 클래스의 prototype 프로퍼티에 바인딩된 객체가 설정된다. 마지막으로 인스턴스는 this에 바인딩된다. 따라서 construct 내부의 this는 클래스가 생성한 인스턴스를 가리킨다.
+
+- 인스턴스 초기화
+
+constructor의 내부코드가 실행되어 this에 바인딩 되어있는 인스턴스를 초기화한다. 즉, this에 바인딩 되어있는 인스턴스에 프로퍼티를 추가하고 constructor가 인수로 전달받은 초기값으로 인스턴스의 프로퍼티 값을 초기화 한다.
+
+- 프로토타입 / 정적 메소드 추가
+
+클래스 몸체에 정의한 프로토타입 메소드가 존재하면 클래스의 prototype 프로퍼티가 가리키는 프로토타입에 추가한다. 동일하게 클래스 몸체에 정의한 정적 메소드가 존재하면 클래스에 추가한다.
+
+- 인스턴스 반환
+
+마지막으로 클래스의 모든 처리가 끝나면 완성된 인스터가 바인딩된 this가 암묵적으로 반환된다.
+
+```js
+class Person {
+  // 생성자
+  constructor(name) {
+    // 1. 암묵적으로 인스턴스가 생성되고 this에 바인딩된다.
+console.log(this); // Person {}
+    console.log(Object.getPrototypeOf(this) === Person.prototype); // true
+
+    // 2. this에 바인딩되어 있는 인스턴스를 초기화한다.
+    this.name = name;
+
+    // 4. 완성된 인스턴스가 바인딩된 this가 암묵적으로 반환된다.
+  }
+
+  // 3. 프로토타입 메소드는 클래스의 prototype에 메소드로 추가된다.
+  sayHi() {
+    console.log(`Hi! My name is ${this.name}`);
+  }
+
+  // 3. 정적 메소드는 클래스에 메소드로 추가된다.
+  static sayHello() {
+    console.log('Hello!');
+  }
+}
+```
+
+<br>
+
+## 프로퍼티
+
+### 인스턴스 프로퍼티
+
+인스턴스 프로퍼티는 constructor 내부에서 정의해야 한다.
+
+```js
+class Person {
+    constructor(name) {
+        this.name = name;
+    }
+}
+```
+
+constructor 내부에서 this에 추가한 프로퍼티는 언제나 클래스가 생성한 인스턴스의 프로퍼티가 된다. ES6의 클래스는 다른 객체지향언어 처럼 private / public / protected 키워드와 같은 **접근제한자**를 지원하지 않는다. 따라서 인스턴스 프로퍼티는 언제나 **public**하다.
+
+<br>
+
+### 접근자 프로퍼티
+
+접근자 프로퍼티는 자체적으로는 값([[Value]] 내부슬롯)을 갖지않고 다른 데이터 프로퍼티의 값을 읽거나 저장할 때 사용하는 접근자함수(getter / setter)로 구성된 프로퍼티이다.
+
+```js
+class Person {
+    constructor(firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+    
+    get fullName() {
+        return `${this.firstName} ${this.lastName}`
+    }
+    set fullName(name) {
+        [this.firstName, this.lastName] = name.split(' ');
+    }
+}
+
+const me = Person('wooseong', 'lee');
+console.log(me) = {firstName : 'wooseong', lastName : 'lee'}
+me. fullName = ahah kim;
+
+console.log(me) = {firstName : 'ahah', lastName : 'kim'}
+
+console.log(Object.getOwnPropertyDescriptor(Person.prototype, 'fullName'));
+// {get: ƒ, set: ƒ, enumerable: false, configurable: true}
+```
+
+클래스에서 접근자 프로퍼티는 위 처럼 constructor 메소드 외부에 정의한다.
+
+앞서 클래스에 아무런 키워드 없이 정의한 메소드는 프로토타입 메소드가 된다고 했다. <strong>그렇기 때문에 클래스의 접근자 프로퍼티 또한 인스턴스 프로퍼티가 아닌 프로토타입의 프로퍼티가 된다.</strong>
+
+```js
+// Object.getOwnPropertyNames는 비열거형을 포함한 모든 프로퍼티의 이름을 반환함.
+
+console.log(Object.getOwnPropertyNames(me))
+// ['firstName', 'lastName']
+console.log(Object.getOwnPropertynames(Object.getPrototypeOf(me)))
+// ['constructor', 'fullName']
+```
+
+![image](https://user-images.githubusercontent.com/62285872/81900388-a8d1bd80-95f7-11ea-9128-ef22500acdbc.png)	
+
+![image](https://user-images.githubusercontent.com/62285872/81900415-b8e99d00-95f7-11ea-82cd-9c1940b1bf0c.png)	
+
+<br>
+
+### 클래스 필드 정의제안
+
+> 클래스필드란?(class field)
+>
+> 클래스필드는 클래스 기반 객체지향 언어에서 클래스가 생성할 <strong>인스턴스의 프로퍼티</strong>를 가리키는 용어이다.
+
+```java
+public class Person {
+    private String firstName = "";
+    private String lastName = "";
+    
+    Person(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+    
+    public String getFullName() {
+        return firstName + " " + lastName;
+    }
+}
+```
+
+위 예제는 자바에서 사용하는 코드이다.
+
+인스턴스의 프로퍼티를 선언하고 초기화하려면 반드시 생성자 함수의 몸체 또는 클래스의 constructor 내부에서 this에 프로퍼티를 추가해야하는 자바스크립트와는 달리 클래스 기반 객체지향 언어에서는 위와 같이 클래스가 생성할 인스턴스의 프로퍼티인 **클래스필드**를 마치 변수처럼 클래스 몸체에 this 없이 선언해야 한다.
+
+또한 자바스크립트의 경우 인스턴스 프로퍼티를 참조할 때 반드시 **this**를 사용해야 하나, <strong>클래스 기반 객체지향 언어에서는 this의 생략이 가능하다.</strong>
+
+클래스 기반 객체지향 언어에서의 **this**는 언제나 <strong>인스턴스 자신</strong>을 의미한다. 또한 this는 주로 클래스필드가 생성자 또는 메소드의 매개변수 이름과 동일할 때 클래스 필드임을 명확히 하기위해 사용한다.
+
+자바스크립트의 경우 아래처럼 클래스 몸체에 메소드가 아닌 클래스 필드를 선언하면 문법에러가 발생한다.
+
+```js
+class Person {
+    name = 'lee';
+}
+```
+
+하지만 위 예제를 최신 브라우저(Chrome 72 이상) 또는 최신 Node.js(버전 12 이상)에서 실행하면 정상 동작한다. 그 이유는 자바스크립트 에서도 인스턴스 프로퍼티를 마치 클래스 기반 객체지향 언어의 클래스 필드처럼 정의할 수 있는 새로운 표준사양인 <strong>"Class field declarations"</strong>가 [TC39프로세스](https://tc39.es/process-document/)의 stage3 (candidate)에 제안되어 있기 때문이다.
+
+> TC39란? (Technical Committee 39)
+>
+> ECMA 인터내셔널은 ECMAScript 이외에도 다양한 기술의 사양을 관리하고 있고 이들 사양을 관리하는 주체인 기술위원회도 여럿 존재한다. 여러 사양 중에서 ECMA-262 사양(ECMAScript)의 관리를 담당하는 위원회가 바로 TC39이다.
+>
+> TC39는 Google, Apple, Microsoft, Mozilla 등 브라우저 벤더와 Facebook, Twitter와 같이 ECMA-262 사양(ECMAScript)를 제대로 준수해야 하는 기업으로 구성되어 있다.
+
+> TC39 프로세스?
+>
+> TC39 프로세스는 <strong>ECMA-262 사양에 새로운 표준사양을 추가</strong>하기 위해 공식적으로 명문화 해 놓은 과정을 말한다. TC39 프로세스는 0단계부터 4단계 까지 총 5단계로 구성되어 있고 상위 단계로 승급하기 위한 명시적인 조건들이 존재한다. 승급 조건을 충족시킨 제안은 TC39의 동의를 통해 다음단계로 승급된다. 
+>
+> stage 0: strawman => stage 1: proposal => stage 2: draft => stage 3: candidate => stage 4: finished
+
+클래스 몸체에서 클래스 필드를 정의할 수 있는 클래스 필드 정의(Class field definitions) 제안은 아직 ECMAScript의 정식 표준 사양으로 승급 되지 않았다. 하지만 최신 브라우저(Chrome 72 이상)와 최신 Node.js(버전 12 이상)는 표준 사양으로 승급이 확실시되는 이 제안을 미리 구현해 놓았다. 따라서 최신 브라우저와 최신 Node.js에서는 아래 예제와 같이 클래스 필드를 클래스 몸체에 정의할 수 있다.
+
+```js
+class Person {
+  // 클래스 필드 정의
+  name = 'Lee';
+}
+
+const me = new Person();
+console.log(me); // Person {name: "Lee"}
+```
+
+클래스 몸체에서 클래스 필드를 정의하는 경우 this에 클래스 필드를 바인딩해서는 안된다. <strong>this는 클래스의 constructor와 메소드 내에서만 유효하다.</strong>
+
+```js
+class Person {
+  // this에 클래스 필드를 바인딩해서는 안된다.
+  this.name = ''; // SyntaxError: Unexpected token .
+}
+```
+
+또한 클래스 필드를 참조하는 경우 자바스크립트에서는 this를 반드시 사용해야 한다.
+
+```js
+class Person {
+  // 클래스 필드
+  name = 'Lee';
+
+  constructor() {
+    console.log(name); // ReferenceError: name is not defined
+  }
+}
+
+new Person();
+```
+
+클래스 필드에 초기값을 할당하지 않으면 undefined를 갖는다.
+
+```js
+class Person {
+  // 클래스 필드를 초기화하지 않으면 undefined를 갖는다.
+  name;
+}
+
+const me = new Person();
+console.log(me); // Person {name: undefined}
+```
+
+인스턴스를 생성할 때, <strong>외부의 초기값으로 클래스 필드를 초기화 해야할 필요가 있다면</strong> **constructor**에서 클래스 필드를 초기화 해야한다.
+
+```js
+class Person {
+  name;
+
+  constructor(name) {
+    // 클래스 필드 초기화.
+    this.name = name;
+  }
+}
+
+const me = new Person('Lee');
+console.log(me); // Person {name: "Lee"}
+```
+
+하지만, 위 예제처럼 인스턴스를 생성할 때 클래스 필드를 초기화 할 필요가 있다면 굳이constructor 밖에서 클래스 필드를 정의할 필요가 없다. 어차피 constructor 내부에서 정의된 값으로 인스턴스의 프로퍼티가 생성될 것이기 때문이다.
+
+또한 함수는 값으로 사용될 수 있는 **일급객체** 이므로 클래스 필드에는 함수의 할당이 가능하다.
+
+```js
+class Person {
+    name = 'lee';
+	getName = function() {
+        return this.name;
+    }
+ 	// 화살표 함수로 정의할 수도 있다.
+    // getName = () => this.name;
+}
+```
+
+이처럼 클래스 필드에 함수를 할당하는 경우, 이 함수는 프로토타입 메소드가 아닌 <strong>인스턴스 메소드</strong>가 된다. 따라서 클래스 필드에 함수를 할당하는 것은 권장하지 않는다.
+
+클래스 필드에 화살표 함수를 할당하여 화살표 함수 내부의 this가 인스턴스를 가리키도록 하는 경우도 있다.
+
+??? => 아래 예제는 잘 모르겠음.
+
+```js
+<!DOCTYPE html>
+<html>
+<body>
+  <button class="btn">0</button>
+  <script>
+    class App {
+      constructor() {
+        this.$button = document.querySelector('.btn');
+        this.count = 0;
+
+        // increase 메소드를 이벤트 핸들러로 등록
+        // 이벤트 핸들러 increase 내부의 this는 DOM 요소(this.$button)를 가리킨다.
+        // 하지만 increase는 화살표 함수로 정의되어 있으므로
+        // increase 내부의 this는 인스턴스를 가리킨다.
+        this.$button.onclick = this.increase;
+
+        // 만약 increase가 화살표 함수가 아니라면 bind 메소드를 사용하여야 한다.
+        // $button.onclick = this.increase.bind(this);
+      }
+
+      // 인스턴스 메소드
+      // 화살표 함수 내부의 this는 언제나 상위 컨텍스트의 this를 가리킨다.
+      increase = () => this.$button.textContent = ++this.count;
+    }
+    new App();
+  </script>
+</body>
+</html>
+```
+
+결론적으로 자바스크립트의 클래스에서 인스턴스 프로퍼티를 정의하는 방식은 2가지 이다.
+
+1. 외부 초기값으로 클래스 필드를 초기화할 필요가 있는 경우
+
+   constructor 메소드 내에서 인스턴스 프로퍼티를 정의.
+
+2. 외부 초기값으로 클래스 필드를 초기화할 필요가 없는 경우
+
+   constructor 메소드 내에서 인스턴스 프로퍼티를 정의.
+
+   클래스 필드를 사용한 인스턴스 프로퍼티 정의.
+
+<br>
+
+### private 필드 정의제안
+
+constructor 내부에서 this를 통해 정의한 인스턴스 프로퍼티는 인스턴스를 통해 클래스 외부에서 언제나 참조할 수 있다. 즉 **public**하다.
+
+ES6의 클래스는 다른 객체지향 언어처럼 private, public, protected 키워드와 같은 접근 제한자(access modifier)를 지원하지 않는다.
+
+생성자 함수에서는 클로저를 사용하여 private한 프로퍼티를 흉내낼 수 있었다. 단 private한 프로퍼티를 흉내낸 자유 변수에 접근하면 에러가 발생하지 않고 **undefined**를 반환하므로 아쉬움이 남는다.
+
+```js
+// ES5
+var Person = (function(){
+    	var _name = '';
+    
+    function Person() {_name = name;}
+    
+    Person.prototype.sayHi = function() {
+        console.log(`hi, my name is _name`);
+    };
+    
+    return Person;
+}());
+
+var me = new Person('lee');
+```
+
+몸체에 변수를 선언할 수 없는 클래스는 위와 같은 방식으로는 private한 프로퍼티를 흉내낼 수 없다.
+
+```js
+class Person {
+    let name = ''; // SyntaxError: Unexpected identifier
+}
+```
+
+클래스 필드 정의제안을 사용하더라도 클래스 필드는 기본적으로 public 하기 때문에 외부에 그대로 노출된다.
+
+```js
+class Person {
+    name = '';
+}
+```
+
+현재 TC39 프로세스의 stage3에 private 필드를 정의할 수 있는 새로운 표준사양이 제안되어있다. 표준 사양으로 승급이 확실시 되는 이 제안도 최신 브라우저(Chrome 74 이상)과 최신 최신 Node.js(버전 12 이상)에 이미 구현되어 있다.
+
+<strong>private 필드의 선두에는 `#`을 붙여준다. private 필드를 참조할 때도 #을 붙어주어야 한다.</strong>
+
+```js
+class Person {
+    #name = '';
+    constructor(name) {
+        this.#name = name;
+    }
+}
+
+console.log(new Person('lee')) // 
+console.log(new Person('lee').#name);
+// Uncaught SyntaxError: Private field '#name' must be declared in an enclosing class
+```
+
+> TypeScript
+>
+> C# 의 창시자인 Anders Hejlsberg 가 개발을 주도한 자바스크립트의 Superset인 TypeScript는 클래스 기반 객체지향 언어가 지원하는 접근 제한자인 public / private / protected를 모두 지원한다.
+
+public 필드는 어디서든지 참조할 수 있지만 private 필드는 클래스 내부에서만 참조가 가능하다.
+
+| 접근가능성                  | public | private |
+| --------------------------- | ------ | ------- |
+| 클래스 내부                 | O      | O       |
+| 자식 클래스 내부            | O      | X       |
+| 클래스 인스턴스를 통한 접근 | O      | X       |
+
+부모 클래스를 포함한 클래스 외부에서 private 필드에 직접 접근할 수 있는 방법은 없다. 다만 접근자 프로퍼티를 통해 간접적으로 접근하는 방법은 유효하다.
+
+```js
+class Person {
+    #name = '';
+    
+    constructor(name) {
+        this.#name = name;
+    }
+	get name() {
+        return this.#name.trim() // trim??
+    }
+}
+
+console.log(new Person('lee').name); // 'lee'
+```
+
+<strong>private 필드는 반드시 클래스 몸체에 정의해야 한다.</strong> private 필드를 직접 constructor에 정의하면 에러가 발생한다.
+
+```js
+class Person {
+    constructor(name) {
+        this.#name = name;
+        // SyntaxError: Private field '#name' must be declared in an enclosing class
+    }
+}
+```
+
+<br>
+
+### static 필드 정의제안
+
+자바스크립트의 클래스에는 `static` 키워드를 사용하여 정적메소드를 정의할 수 있다. 하지만 static키워드를 사용하여 정적필드를 정의할 수는 없었다.
+
+하지만 static public 필드, static private 필드, static 메소드를 정의할 수 있는 새로운 표준사양인 "Static class features"가 현재 TC39 프로세서의 stage3에 제안되어 있다. 이 제안 중에 static public / private 필드는 현재 최신브라우저(Chrome 72 이상)과 최신 Node.js(버전 12 이상)에 이미 구현되어 있다.
+
+```js
+class MyMath {
+    // static public 필드 정의
+    static PI = 22 / 7;
+	// static private 필드 정의
+	static #num = 10;
+    // static 메소드
+    static increment() {
+        return ++myMath.#num;
+    }
+}
+
+console.log(MyMath.PI); // 3.14
+console.log(MyMath.increment()); // 11
+
+```
+
+<br>
+
+## 상속에 의한 클래스 확장
 
