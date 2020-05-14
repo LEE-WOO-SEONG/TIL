@@ -99,8 +99,10 @@
     <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch23_execution-context.md">Ch23_execution-context</a></li>
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch24_Closure.md">Ch24_Closure</a></li>
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch25_Class.md">Ch25_Class</a></li>
+        <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch26_additionalFunctions-of-ES6function.md">Ch26_additionalFunctions-of-ES6function</a></li>
     </ul>
 </details>
+
 
 
 
