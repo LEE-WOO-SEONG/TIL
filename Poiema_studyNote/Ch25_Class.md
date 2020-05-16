@@ -38,6 +38,20 @@
 
 8. [상속에 의한 클래스 확장](#상속에-의한-클래스-확장)
 
+   8-1. [클래스 상속과 생성자 함수 상속](#클래스-상속과-생성자-함수-상속)
+
+   8-2. [extends 키워드](#extends-키워드)
+
+   8-3. [동적 상속](#동적-상속)
+
+   8-4. [서브 클래스의 constructor](#서브-클래스의-constructor)
+
+   8-5. [super 키워드](#super-키워드)
+
+   8-6. [상속 클래스의 인스턴스 생성과정](#상속-클래스의-인스턴스-생성과정)
+
+   8-7. [표준 빌트인 생성자 함수 확장](#표준-빌트인-생성자-함수-확장)
+
 <br>
 
 <br>
@@ -1412,5 +1426,70 @@ super 호출 이후, 서브 클래스의 constructor에 기술되어 있는 인�
 
 ### 표준 빌트인 생성자 함수 확장
 
+extends 키워드 다음에는 클래스뿐만이 아니라 [[Construct]] 내부 메소드를 갖는 함수 객체를 반환하는 모든 **표현식**을 사용할 수 있다. <strong>String, Number, Array와 같은 표준 빌트인 객체</strong>도 [[Construct]] 내부 메소드를 갖는 생성자 함수이므로 extends 키워드를 사용하여 확장할 수 있다.
 
+```js
+// Array 생성자 함수를 상속받아 확장한 MyArray
+class MyArray extends Array {
+  // 중복된 배열 요소를 제거하고 반환한다: [1, 1, 2, 3] => [1, 2, 3]
+  uniq() {
+    return this.filter((v, i, self) => self.indexOf(v) === i);
+  }
+
+  // 모든 배열 요소의 평균을 구한다: [1, 2, 3] => 2
+  average() {
+    return this.reduce((pre, cur) => pre + cur, 0) / this.length;
+  }
+}
+
+const myArray = new MyArray(1, 1, 2, 3);
+console.log(myArray); // MyArray(4) [1, 1, 2, 3]
+
+// MyArray.prototype.uniq 호출
+console.log(myArray.uniq()); // MyArray(3) [1, 2, 3]
+// MyArray.prototype.average 호출
+console.log(myArray.average()); // 1.75
+```
+
+Array 생성자 함수를 상속받아 확장한 MyArray 클래스가 생성한 인스턴스는 Array.prototype와 MyArray.prototype의 모든 메소드를 사용할 수 있다.
+
+이때 주의할 것은 Array.prototype의 메소드 중에서 map, filter와 같이 새로운 배열을 반환하는 메소드가 MyArray 클래스의 인스턴스를 반환한다는 것이다.??
+
+```js
+console.log(myArray.filter(v => v % 2) instanceof MyArray); // true
+```
+
+만약 새로운 배열을 반환하는 메소드가 MyArray 클래스의 인스턴스를 반환하지 않고 Array의 인스턴스를 반환하면 MyArray 클래스의 메소드와 메소드 체이닝(method chaining)이 불가능하다.
+
+myArray.filter가 반환하는 인스턴스는 MyArray 클래스가 생성한 인스턴스, 즉 MyArray 타입이다. 따라서 myArray.filter가 반환하는 인스턴스로 uniq 메소드를 연이어 호출(메소드 체이닝)할 수 있다. uniq 메소드가 반환하는 인스턴스는 Array.prototype.filter에 의해 생성되었기 때문에 Array 생성자 함수가 생성한 인스턴스로 생각할 수도 있겠다. 하지만 uniq 메소드가 반환하는 인스턴스도 MyArray 타입이다. 따라서 uniq 메소드가 반환하는 인스턴스로 average 메소드를 연이어 호출(메소드 체이닝)할 수 있다.
+
+만약 MyArray 클래스의 uniq 메소드가 MyArray 클래스가 생성한 인스턴스가 아닌 Array가 생성한 인스턴스를 반환하도록 하려면 아래와 같이 <strong>Symbol.species</strong>를 사용하여 <strong>정적 접근자 프로퍼티를 추가한다.</strong>
+
+```js
+// Array 생성자 함수를 상속받아 확장한 MyArray
+class MyArray extends Array {
+  // 모든 메소드가 Array 타입의 인스턴스를 반환하도록 한다.
+  static get [Symbol.species]() { return Array; }
+
+  // 중복된 배열 요소를 제거하고 반환한다: [1, 1, 2, 3] => [1, 2, 3]
+  uniq() {
+    return this.filter((v, i, self) => self.indexOf(v) === i);
+  }
+
+  // 모든 배열 요소의 평균을 구한다: [1, 2, 3] => 2
+  average() {
+    return this.reduce((pre, cur) => pre + cur, 0) / this.length;
+  }
+}
+
+const myArray = new MyArray(1, 1, 2, 3);
+
+console.log(myArray.uniq() instanceof MyArray); // false
+console.log(myArray.uniq() instanceof Array); // true
+
+// 메소드 체이닝
+// uniq 메소드는 Array 인스턴스를 반환하므로 average 메소드를 호출할 수 없다.
+console.log(myArray.uniq().average());
+// TypeError: myArray.uniq(...).average is not a function
+```
 
