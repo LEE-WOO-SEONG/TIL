@@ -104,8 +104,10 @@
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch28_number.md">Ch28_number</a></li>
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch29_math.md">Ch29_math</a></li>
                 <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch31_regexp.md">Ch31_regexp</a></li>
+        <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch32_string.md">Ch32_string</a></li>
     </ul>
 </details>
+
 
 
 
