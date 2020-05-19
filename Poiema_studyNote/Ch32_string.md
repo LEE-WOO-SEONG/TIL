@@ -6,7 +6,7 @@
 
 2. [length 프로퍼티](#length-프로퍼티)
 
-3. [String 메소드](# String-메소드)
+3. [String 메소드](#String-메소드)
 
    3-1 .[String.prototype.indexOf](#stringprototypeindexof)
 
