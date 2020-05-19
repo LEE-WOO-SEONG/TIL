@@ -101,8 +101,12 @@
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch25_Class.md">Ch25_Class</a></li>
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch26_additionalFunctions-of-ES6function.md">Ch26_additionalFunctions-of-ES6function</a></li>
     <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch27_array.md">Ch27_array</a></li>
+        <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch28_number.md">Ch28_number</a></li>
+        <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch29_math.md">Ch29_math</a></li>
+                <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch31_regexp.md">Ch31_regexp</a></li>
     </ul>
 </details>
+
 
 
 
