@@ -105,8 +105,10 @@
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch29_math.md">Ch29_math</a></li>
                 <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch31_regexp.md">Ch31_regexp</a></li>
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch32_string.md">Ch32_string</a></li>
+    <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch35_spread-syntax.md">Ch35_spread-syntax</a></li>
     </ul>
 </details>
+
 
 
 
