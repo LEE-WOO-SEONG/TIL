@@ -2,11 +2,11 @@
 
 - Toc
 
-1. [String 생성자 함수](#String-생성자-함수)
+1. [String 생성자 함수](#string-생성자-함수)
 
 2. [length 프로퍼티](#length-프로퍼티)
 
-3. [String 메소드](#String-메소드)
+3. [String 메소드](#string-메소드)
 
    3-1 .[String.prototype.indexOf](#stringprototypeindexof)
 
