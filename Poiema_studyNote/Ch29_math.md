@@ -2,29 +2,29 @@
 
 - Toc
 
-1. [Math 프로퍼티](#Math-프로퍼티)
+1. [Math 프로퍼티](#math-프로퍼티)
 
-   1-1. [Math.PI](#MathPI)
+   1-1. [Math.PI](#mathpi)
 
-2. [Math 메소드](#Math-메소드)
+2. [Math 메소드](#math-메소드)
 
-   2-1. [Math.abs](#Mathabs)
+   2-1. [Math.abs](#mathabs)
 
-   2-2. [Math.round](#Mathround)
+   2-2. [Math.round](#mathround)
 
-   2-3. [Math.ceil](#Mathceil)
+   2-3. [Math.ceil](#mathceil)
 
-   2-4. [Math.floor](#Mathfloor)
+   2-4. [Math.floor](#mathfloor)
 
-   2-5. [Math.sqrt](#Mathsqrt)
+   2-5. [Math.sqrt](#mathsqrt)
 
-   2-6. [Math.random](#Mathrandom)
+   2-6. [Math.random](#mathrandom)
 
-   2-7. [Math.pow](#Mathpow)
+   2-7. [Math.pow](#mathpow)
 
-   2-8. [Math.max](#Mathmax)
+   2-8. [Math.max](#mathmax)
 
-   2-9. [Math.min](#Mathmin)
+   2-9. [Math.min](#mathmin)
 
 <br>
 
