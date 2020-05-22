@@ -10,6 +10,8 @@
 
    3-1 .[String.prototype.indexOf](#stringprototypeindexof)
 
+   3-2. [String.prototype.search](#stringprototypesearch)
+
    3-2. [String.prototype.include](#stringprototypeincludes)
 
    3-3. [String.prototype.startsWith](#stringprototypestartswith)
@@ -31,7 +33,7 @@
    3-11. [String.prototype.replace](#stringprototypereplace)
 
    3-12. [String.prototype.split](#stringprototypesplit)
-
+   
    <br>
 
 <br>
@@ -140,6 +142,20 @@ if (str.includes('Hello')) {
 ```
 
 ES6에서 새롭게 도입된 String.prototype.includes 메소드를 사용하여 특정 문자열의 존재 유무 또한 확인이 가능하다. (Array.prototype.includes 처럼 존재하면 true / 없으면 false를 반환)
+
+<br>
+
+### String.prototype.search
+
+search 메소드는 문자열 내에서 인수로 전달받은 정규표현식과 매치하는 문자열을 검색하여 일치하는 문자열의 인덱스를 반환한다. 검색에 실패하면 -1을 반환한다.
+
+```js
+const str = 'Hello world';
+
+// 문자열 str 에서 정규 표현식과 매치하는 문자열을 검색하여 일치하는 문자열의 인덱스를 반환한다.
+str.search(/o/); // -> 4
+str.search(/x/); // -> -1
+```
 
 <br>
 
