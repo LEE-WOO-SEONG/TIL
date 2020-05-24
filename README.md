@@ -108,8 +108,10 @@
     <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch35_spread-syntax.md">Ch35_spread-syntax</a></li>
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch36_destructuring-assignment.md">Ch36_destructuring-assignment</a></li>
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch38_Rendering-process.md">Ch38_Rendering-process</a></li>
+    <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch39_DOM.md">Ch39_DOM</a></li>
     </ul>
 </details>
+
 
 
 
