@@ -2,7 +2,16 @@
 
 - Toc
 
-1.
+1. [이벤트 드리븐 프로그래밍](#이벤트-드리븐-프로그래밍)
+2. [이벤트 타입](#이벤트-타입)
+3. [이벤트 핸들러 제거](#이벤트-핸들러-제거)
+4. [이벤트 객체](#이벤트-객체)
+5. [이벤트 전파](#이벤트-전파)
+6. [이벤트 위임](#이벤트-위임)
+7. [기본 동작의 변경](#기본-동작의-변경)
+8. [이벤트 핸들러 내부의 this](#이벤트-핸들러-내부의-this)
+9. [이벤트 핸들러에 인수전달](#이벤트-핸들러에-인수전달)
+10. [커스텀 이벤트](#커스텀-이벤트)
 
 <br>
 
@@ -270,7 +279,7 @@ Event 인터페이스, 즉 Event.prototype에 정의되어 있는 이벤트 관�
 | bubbles          | 이벤트를 버블링으로 전파하는지 여부를 나타낸다. 아래 이벤트는 bubbles: false로 버블링하지 않는다. - 포커스 이벤트 focus/blur - 리소스 이벤트 load/unload/abort/error - 마우스 이벤트 mouseenter/mouseleave | 불리언        |
 | cancelable       | preventDefault 메소드를 호출하여 이벤트의 기본 동작을 취소할 수 있는지 여부를 나타낸다. 아래 이벤트는 cancelable: false로 취소할 수 없다. - 포커스 이벤트 focus/blur - 리소스 이벤트 load/unload/abort/error - 마우스 이벤트 dbclick/mouseenter/mouseleave | 불리언        |
 | defaultPrevented | preventDefault 메소드를 호출하여 이벤트를 취소하였는지 여부를 나타낸다. | 불리언        |
-| isTrusted        | 사용자의 행위에 의해 발생한 이벤트인지 여부를 나타낸다. 자바스크립트 코드를 통해 인위적으로 발생시킨 이벤트, 예를 들어 click 메소드 또는 dispatchEvent 메소드를 통해 발생시킨 이벤트인 경우, isTrusted는 false이다.(“40.11. 커스텀 이벤트” 참고) | 불리언        |
+| isTrusted        | 사용자의 행위에 의해 발생한 이벤트인지 여부를 나타낸다. 자바스크립트 코드를 통해 인위적으로 발생시킨 이벤트, 예를 들어 click 메소드 또는 dispatchEvent 메소드를 통해 발생시킨 이벤트인 경우, isTrusted는 false이다. | 불리언        |
 | timeStamp        | 이벤트가 발생한 시각(1970/01/01/00:00:00부터 경과한 밀리초)  | 숫자          |
 
 ![image](https://user-images.githubusercontent.com/62285872/82814503-4370ad00-9ed2-11ea-836c-f3ac94f24eb9.png)
@@ -454,3 +463,307 @@ body>
 
 ### 기본 동작 중단
 
+DOM 요소는 저마다의 기본 동작이 있다. 예를 들어, a 요소를 클릭하면 href 어트리뷰트에 지정된 링크로 이동하고, checkbox 또는 radio 요소를 클릭하면 체크 또는 해제된다.
+
+이벤트 객체의 `preventDefault` 메소드는 이러한 DOM 요소의 <strong>기본 동작을 중단</strong>시킨다.
+
+```html
+e.preventDefault()
+```
+
+
+
+### 이벤트 전파 방지
+
+이벤트 객체의 `stopPropagation` 메소드는 이벤트 전파를 중지시킨다. 
+
+```html
+<body>
+  <div class="container">
+    <button class="btn1">Button 1</button>
+    <button class="btn2">Button 2</button>
+    <button class="btn3">Button 3</button>
+  </div>
+  <script>
+    document.querySelector('.container').onclick = ({ target }) => {
+      if (!target.matches('.container > button')) return;
+      target.style.color = 'red';
+    };
+
+    // btn2 요소는 이벤트를 전파하지 않으므로 상위 요소에서 이벤트를 캐치할 수 없다.
+    document.querySelector('.btn2').onclick = e => {
+      // 이벤트 전파 중단
+      e.stopPropagation();
+      e.target.style.color = 'blue';
+    };
+  </script>
+</body>
+```
+
+위 예제를 살펴보면 상위 요소인 container 요소에 이벤트를 위임하였다. 따라서 하위 요소에서 발생한 클릭 이벤트를 상위 요소인 container 요소가 캐치하여 이벤트를 처리한다. 하지만 하위 요소 중에서 btn2 요소는 자체적으로 이벤트를 처리한다. 이때 btn2 요소는 자신이 발생시킨 이벤트가 전파되는 것을 중단하여 자신에게 바인딩된 이벤트 핸들러만 실행되도록 한다.
+
+이처럼 상위 요소와 하위 요소의 이벤트를 각각 별도로 처리하기 위해 이벤트의 전파를 중단시키기 위해서 stopPropagation 메소드를 사용한다.
+
+<br>
+
+## 이벤트 핸들러 내부의 this
+
+### 이벤트 핸들러 어트리뷰트 방식
+
+벤트 핸들러 어트리뷰트 방식의 경우, 이벤트 핸들러 내부의 this는 <strong>전역 객체</strong> window를 가리킨다.
+
+```html
+<body>
+  <button onclick="handleClick()">Click me</button>
+  <script>
+    function handleClick () {
+      console.log(this); // window
+    }
+  </script>
+</body>
+```
+
+### 이벤트 핸들러 프로퍼티 방식과 addEventListener 메소드 방식
+
+이벤트 핸들러 프로퍼티 방식과 addEventListener 메소드 방식 모두 이벤트 핸들러 내부의 this는 이벤트를 바인딩한 DOM 요소를 가리킨다.
+
+```html
+<body>
+  <p>
+    <button>Click me</button>
+  </p>
+  <script>
+    const $btn = document.querySelector('button');
+    const $paragraph = document.querySelector('p');
+    $paragraph.onclick = function (e) {
+      console.log(this === e.currentTarget); // true
+      console.log(this === e.target); // false
+    }
+  </script>
+</body>
+```
+
+화살표 함수로 정의한 이벤트 핸들러의 경우, 이벤트 핸들러 내부의 this는 상위 컨텍스트의 this를 가리킨다.
+
+```html
+<body>
+  <p>
+    <button>Click me</button>
+  </p>
+  <script>
+    const $btn = document.querySelector('button');
+    const $paragraph = document.querySelector('p');
+    $paragraph.onclick = e => {
+      console.log(this === window); // true
+    }
+  </script>
+</body>
+```
+
+클래스에서 이벤트 핸들러를 바인딩하는 경우, this에 주의해야 한다. 아래 예제를 살펴보자. 아래 예제는 이벤트 핸들러 프로퍼티 방식을 사용하고 있으나 addEventListener 메소드 방식을 사용하는 경우와 동일하다.
+
+```html
+<body>
+  <button class="btn">0</button>
+  <script>
+    class App {
+      constructor() {
+        this.$button = document.querySelector('.btn');
+        this.count = 0;
+
+        // increase 메소드를 이벤트 핸들러로 등록
+        // 이벤트 핸들러 increase 내부의 this는 DOM 요소(this.$button)를 가리킨다.
+        this.$button.onclick = this.increase;
+        // -> TypeError: Cannot set property 'textContent' of undefined
+      }
+
+      increase() {
+        this.$button.textContent = ++this.count;
+      }
+    }
+
+    new App();
+  </script>
+</body>
+```
+
+위 예제의 increase 메소드 내부의 this는 클래스가 생성할 인스턴스를 가리키지 않고 $button을 가리키기 때문에 에러가 발생한다. 따라서 increase 메소드를 이벤트 바인딩할 때, bind 메소드를 사용해 this를 전달하여 increase 메소드 내부의 this가 클래스가 생성할 인스턴스를 가리키도록 해야 한다.
+
+```html
+this.$button.onclick = this.increase.bind(this);
+```
+
+또는 클래스 필드에 할당한 화살표 함수를 이벤트 핸들러로 등록하여 이벤트 핸들러 내부의 this가 인스턴스를 가리키도록 할 수도 있다. 다만 이때 이벤트 핸들러 increase는 프로토타입 메소드가 아닌 인스턴스 메소드가 된다.
+
+```html
+this.$button.onclick = this.increase;
+
+increase = () => this.$button.textContent = ++this.count;
+```
+
+<br>
+
+## 이벤트 핸들러에 인수전달
+
+함수에게 인수를 전달하려면 <strong>함수를 호출할 때</strong> 전달해야 한다. 이벤트 핸들러 어트리뷰트 방식은 함수 호출문을 사용할 수 있기 때문에 인수를 전달할 수 있지만, 이벤트 핸들러 프로퍼티 방식과 addEventListener 메소드 방식의 경우, 이벤트 핸들러를 **브라우저**가 호출하기 때문에 함수 호출문이 아닌 **함수자체**를 등록해야 한다. 
+
+이 경우 이벤트 핸들러 내부에서 함수를 호출하면서 인수를 전달할 수 있다.
+
+```html
+<body>
+  <label>User name <input type='text'></label>
+  <em class="message"></em>
+  <script>
+    const MIN_USER_NAME_LENGTH = 5; // 이름 최소 길이
+    const $input = document.querySelector('input[type=text]');
+    const $msg = document.querySelector('.message');
+
+    const checkUserNameLength = min => {
+      $msg.textContent
+        = $input.value.length < min ? `이름은 ${min}자 이상 입력해 주세요` : '';
+    };
+
+    // 이벤트 핸들러 내부에서 함수를 호출하면서 인수를 전달한다.
+    $input.onblur = () => {
+      checkUserNameLength(MIN_USER_NAME_LENGTH);
+    };
+    // $input.addEventListener('blur', () => {
+    //   checkUserNameLength(MIN_USER_NAME_LENGTH);
+    // });
+  </script>
+</body>
+```
+
+```html
+<body>
+  <label>User name <input type='text'></label>
+  <em class="message"></em>
+  <script>
+    const MIN_USER_NAME_LENGTH = 5; // 이름 최소 길이
+    const $input = document.querySelector('input[type=text]');
+    const $msg = document.querySelector('.message');
+
+    // 이벤트 핸들러를 반환하는 함수
+    const checkUserNameLength = min => e => {
+      $msg.textContent
+        = $input.value.length < min ? `이름은 ${min}자 이상 입력해 주세요` : '';
+    };
+
+    // 이벤트 핸들러를 반환하는 함수를 호출하면서 인수를 전달한다.
+    $input.onblur = checkUserNameLength(MIN_USER_NAME_LENGTH);
+    // $input.addEventListener('blur', checkUserNameLength(MIN_USER_NAME_LENGTH));
+  </script>
+</body>
+```
+
+<br>
+
+## 커스텀 이벤트
+
+### 커스텀 이벤트 생성
+
+이벤트 객체는 Event, UIEvent, MouseEvent와 같은 생성자 함수로 생성할 수 있다. 이벤트가 발생하면 생성되는 이벤트 객체는 이벤트의 종류에 따라 이벤트 타입이 결정되지만 Event, UIEvent, MouseEvent와 같은 생성자 함수로 이벤트 객체를 생성하는 경우, 이벤트 타입을 명시적으로 지정할 수 있다.
+
+이를 통해 앞서 살펴본 이벤트 타입 이외의 이벤트의 생성이 가능하다. <strong>이를 커스텀 이벤트라 한다.</strong>
+
+이벤트 생성자 함수의 인수로 전달하는 이벤트 타입은 기존 이벤트 타입을 사용할 수 있다.
+
+```js
+// KeyboardEvent 생성자 함수로 keyup 이벤트 타입의 커스텀 이벤트 객체를 생성
+const keyboardEvent = new KeyboardEvent('keyup');
+console.log(keyboardEvent.type); // keyup
+```
+
+생성된 커스텀 이벤트 객체는 <strong>버블링되지 않으며 취소할 수도 없다.</strong> 즉, bubbles와 cancelable 프로퍼티의 값이 false로 기본 설정된다.
+
+```js
+// MouseEvent 생성자 함수로 click 이벤트 타입의 커스텀 이벤트 객체를 생성
+const customEvent = new MouseEvent('click');
+console.log(customEvent.type); // click
+console.log(customEvent.bubbles); // false
+console.log(customEvent.cancelable); // false
+```
+
+또는 임의 문자열을 사용하여 기존의 이벤트 타입이 아닌 새로운 이벤트 타입을 지정할 수도 있다. 이 경우, 일반적으로 CustomEvent 이벤트 생성자 함수를 사용한다
+
+```js
+// CustomEvent 생성자 함수로 foo 이벤트 타입의 커스텀 이벤트 객체를 생성
+const customEvent = new CustomEvent('foo');
+console.log(customEvent.type); // foo
+```
+
+bubbles또는 cancelable 프로퍼티를 true로 설정하려면 이벤트 생성자 함수의 두번째 인수로 bubbles 또는 cancelable 프로퍼티를 갖는 **객체**를 전달한다.
+
+```js
+// MouseEvent 생성자 함수로 click 이벤트 타입의 커스텀 이벤트 객체를 생성
+const customEvent = new MouseEvent('click', {
+  bubbles: true,
+  cancelable: true
+});
+
+console.log(customEvent.bubbles); // true
+console.log(customEvent.cancelable); // true
+```
+
+bubbles또는 cancelable 프로퍼티뿐만 아니라 이벤트 생성자 함수에 따라 생성된 이벤트의 특성에 맞는 프로퍼티를 설정할 수 있다. 예를 들어 MouseEvent 생성자 함수로 생성한 마우스 이벤트 객체는 마우스 포인터의 좌표 정보를 나타내는 프로퍼티 screenX/screenY, clientX/clientY, pageX/pageY, offsetX/offsetY와 버튼 정보를 나타내는 프로퍼티 altKey, ctrlKey, shiftKey, button를 갖는다.
+
+```js
+// MouseEvent 생성자 함수로 click 이벤트 타입의 커스텀 이벤트 객체를 생성
+const mouseEvent = new MouseEvent('click', {
+  bubbles: true,
+  cancelable: true,
+  clientX: 50,
+  clientY: 100
+});
+
+console.log(mouseEvent.clientX); // 50
+console.log(mouseEvent.clientY); // 100
+
+// KeyboardEvent 생성자 함수로 keyup 이벤트 타입의 커스텀 이벤트 객체를 생성
+const keyboardEvent = new KeyboardEvent('keyup', { keyCode: 13 });
+
+console.log(keyboardEvent.keyCode); // 13
+```
+
+이벤트 생성자 함수로 생성한 커스텀 이벤트는 isTrusted 프로퍼티의 값이 언제나 **false**이다. 커스텀 이벤트가 아닌 사용자의 행위에 의해 발생한 이벤트에 의해 생성된 이벤트 객체의 isTrusted 프로퍼티 값은 언제나 true이다.
+
+```js
+// InputEvent 생성자 함수로 foo 이벤트 타입의 커스텀 이벤트 객체를 생성
+const customEvent = new InputEvent('foo');
+console.log(customEvent.isTrusted); // false
+```
+
+<br>
+
+### 커스텀 이벤트 디스패치
+
+생성된 커스텀 이벤트는 `dispatchEvent` 메소드로 디스패치(이벤트를 발생시키는 행위)할 수 있다.
+
+```html
+<body>
+  <button class="btn">Click me</button>
+  <script>
+    const $button = document.querySelector('.btn');
+
+    // click 커스텀 이벤트 핸들러 등록
+    // 커스텀 이벤트를 디스패치하기 이전에 이벤트 핸들러를 등록해야 한다.
+    $button.addEventListener('click', e => {
+      console.log(e);
+      // MouseEvent {isTrusted: false, screenX: 0, screenY: 0, clientX: 0, ...}
+      e.target.textContent = 'Clicked!';
+    });
+
+    // 커스텀 이벤트 생성
+    const customEvent = new MouseEvent('click');
+
+    // 커스텀 이벤트 디스패치(동기적)
+    $button.dispatchEvent(customEvent);
+  </script>
+</body>
+```
+
+일반적으로 이벤트는 비동기적으로 발생하지만 dispatchEvent 메소드는 커스텀 이벤트를 동기적으로 발생시킨다. 따라서 dispatchEvent 메소드로 이벤트를 디스패치하기 이전에 커스텀 이벤트를 처리할 이벤트 핸들러를 등록해야 한다.
+
+기존의 이벤트 타입이 아닌 새로운 이벤트 타입을 지정하여 이벤트 객체를 생성한 경우, 일반적으로 CustomEvent 이벤트 생성자 함수를 사용하는데, 이때 CustomEvent 이벤트 생성자 함수에는 2번째 인수로 이벤트와 함께 전달하고 싶은 정보를 담은 detail 프로퍼티를 포함하는 객체를 전달할 수 있다. 이 정보는 이벤트 객체의 detail 프로퍼티(e.detail)에 담겨 전달된다.
+
+기존의 이벤트 타입이 아닌 새로운 이벤트 타입을 지정하여 커스텀 이벤트 객체를 생성한 경우, 이벤트 핸들러 등록은 반드시 <strong>addEventListener</strong> 방식을 사용해야 한다.새로운 이벤트 타입의 커스텀 이벤트에 대해 이벤트 핸들러 어트리뷰트/프로퍼티 방식을 사용할 수 없는 이유는 on + 이벤트 타입으로 이루어진 이벤트 핸들러 어트리뷰트/프로퍼티가 존재하지 않기 때문이다. 예를 들어, foo라는 이벤트 타입의 커스텀 이벤트를 생성한 경우, ‘onfoo’라는 핸들러 어트리뷰트/프로퍼티가 존재하지 않기 때문에 이벤트 핸들러를 등록할 수 없다.
