@@ -71,6 +71,9 @@
     <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Etc/seo(searchengine_optimize).md">seo(searchengine_optimize)</a></li>
     <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Etc/webaccibility.md">webaccibility</a></li>
     <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Etc/ASCII&byte.md">ASCII&byte</a></li>
+    <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Etc/API usage in js.md">API usage in js</a></li>
+    <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Etc/webpack.md">webpack</a></li>
+    <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Etc/what is MVC.md">what is MVC</a></li>
   </ul>
 </details>
 <details>
@@ -109,8 +112,11 @@
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch36_destructuring-assignment.md">Ch36_destructuring-assignment</a></li>
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch38_Rendering-process.md">Ch38_Rendering-process</a></li>
     <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch39_DOM.md">Ch39_DOM</a></li>
+        <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch40_event.md">Ch40_event</a></li>
     </ul>
 </details>
+
+
 
 
 
