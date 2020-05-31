@@ -501,13 +501,13 @@ datalist : 자동완성
    <label for="fuit"> favorite: </label>
    <select id="fruit" size="3" multiple>
         <optgroup label="내가 좋아하는 과일">
-            <option>apple</option>
-            <option>mango</option>
-            <option>banana</option>
-        </optgroup>>
+            <option value="apple">apple</option>
+            <option value="mango">mango</option>
+            <option value="banana">banana</option>
+        </optgroup>
         <optgroup label="내가 싫어하는 과일">
-            <option>strawberry</option>
-            <option>grape</option>
+            <option value="strawberry">strawberry</option>
+            <option value="grape">grape</option>
         </optgroup>
     </select>
 ```
@@ -526,14 +526,14 @@ input에 미리 정의된 옵션을 지정하여 자동완성 기능을 제공�
 </ul>
 
 ```
-    <input type="text" list="fruits">
+    <input list="fruits">
     
     <datalist id="fruits">
-        <option>Apple</option>
-        <option>Orange</option>
-        <option>Banana</option>
-        <option>Mango</option>
-        <option>Fineapple</option>
+        <option value="Apple">
+        <option value="Orange">
+        <option value="Banana">
+        <option value="Mango">
+        <option value="Fineapple">
     </datalist>
 ```
 
