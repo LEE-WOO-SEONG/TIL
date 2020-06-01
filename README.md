@@ -74,6 +74,7 @@
     <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Etc/API usage in js.md">API usage in js</a></li>
     <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Etc/webpack.md">webpack</a></li>
     <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Etc/what is MVC.md">what is MVC</a></li>
+      <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Etc/localStorage.md">localStorage</a></li>
   </ul>
 </details>
 <details>
@@ -116,6 +117,7 @@
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch47_module.md">Ch47_module</a></li>
     </ul>
 </details>
+
 
 
 
