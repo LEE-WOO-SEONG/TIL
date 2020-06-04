@@ -114,9 +114,12 @@
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch38_Rendering-process.md">Ch38_Rendering-process</a></li>
     <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch39_DOM.md">Ch39_DOM</a></li>
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch40_event.md">Ch40_event</a></li>
+        <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/ch41_timerfunction.md">Ch41_timerfunction</a></li>
+        <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch42_asynchronous-programming.md">Ch42_asynchronous-programming</a></li>
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch47_module.md">Ch47_module</a></li>
     </ul>
 </details>
+
 
 
 
