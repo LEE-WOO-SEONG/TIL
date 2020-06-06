@@ -2,7 +2,9 @@
 
 - Toc
 
-1. 
+1. [REST API의 구성](#rest-api의-구성)
+2. [REST API의 설계방침](#rest-api의-설계방침)
+3. [JSON server를 사용한 REST API 실습](#json-server를-사용한-rest-api-실습)
 
 <br>
 
