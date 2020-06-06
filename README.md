@@ -118,8 +118,10 @@
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch42_asynchronous-programming.md">Ch42_asynchronous-programming</a></li>
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch47_module.md">Ch47_module</a></li>
         <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch43_ajax.md">Ch43_ajax</a></li>
+        <li><a href="https://github.com/LEE-WOO-SEONG/TIL/blob/master/Poiema_studyNote/Ch44_restapi.md">Ch44_restapi</a></li>
     </ul>
 </details>
+
 
 
 
