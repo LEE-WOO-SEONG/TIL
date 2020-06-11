@@ -66,9 +66,15 @@ const removeTodo = id => {
   });
 };
 
-const completeAll = completed => {
-  todos = todos.map(todo => completed ? {...todo, completed: true} : {...todo, completed: false});
-}
+const completeAll = checkState => {
+  const completed = checkState;
+
+  ajax.patch('http://localhost:9000/todos', { completed },  _todos => {
+    todos = _todos;
+
+    render();
+  });
+};
 
 const validateAllcompleted = () => {
   if(todos.length) return todos.every(todo => todo.completed);
@@ -76,6 +82,7 @@ const validateAllcompleted = () => {
 
 const todoSelect = id => {
   const completed = !todos.find(todo => todo.id === +id).completed;
+
   ajax.patch(`http://localhost:9000/todos/${id}`, { completed }, _todos => {
     todos = _todos;
 
@@ -84,7 +91,12 @@ const todoSelect = id => {
 };
 
 const clearCompleted = () => {
-  todos = todos.filter(todo => !todo.completed);
+
+  ajax.delete('http://localhost:9000/todos/completed', _todos => {
+    todos = _todos;
+
+    render();
+  });
 };
 
 const changeNavState = id => {
