@@ -58,7 +58,7 @@ app.patch('/todos/:id', (req, res) => {
   const { completed } = req.body;
   console.log('[PATCH] req.body => ', completed);
 
-  todos = todos.map(todo => todo.id === +id ? {...todo, completed: !todo.completed } : todo);
+  todos = todos.map(todo => todo.id === +id ? {...todo, completed } : todo);
   res.send(todos);
 });
 
