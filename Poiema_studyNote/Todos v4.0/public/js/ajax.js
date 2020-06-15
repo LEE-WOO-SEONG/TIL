@@ -1,33 +1,34 @@
 export const ajax = (() => {
 
-  const req = (method, url, callback, payLoad) => {
+  const req = (method, url, callback, payload) => {
+
     const xhr = new XMLHttpRequest();
 
-    xhr.open(method, url)
+    xhr.open(method, url);
     xhr.setRequestHeader('content-type', 'application/json');
-    xhr.send(JSON.stringify(payLoad));
-  
+    xhr.send(JSON.stringify(payload));
+
     xhr.onload = () => {
       if (xhr.status === 200 || xhr.status === 201) {
         callback(JSON.parse(xhr.response));
       } else {
         console.error(xhr.status);
       }
-    };
-  };
+    }
+  }
 
   return {
     get(url, callback) {
-      req('GET', url, callback)
+      req('GET', url, callback);
     },
-    post(url, payLoad, callback) {
-      req('POST', url, callback, payLoad)
+    post(url, payload, callback) {
+      req('POST', url, callback, payload);
     },
-    patch(url, payLoad, callback) {
-      req('PATCH', url, callback, payLoad)
+    patch(url, payload, callback) {
+      req('PATCH', url, callback, payload);
     },
     delete(url, callback) {
-      req('DELETE', url, callback)
+      req('DELETE', url, callback);
     }
-  };
+  }
 })();

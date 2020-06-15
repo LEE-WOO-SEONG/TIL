@@ -1,6 +1,5 @@
 import { ajax } from './ajax.js';
 
-
 // State
 let todos = [];
 let navState = 'all';
@@ -18,12 +17,11 @@ const $nav = document.querySelector('.nav');
 
 // 서버에 요청한 data를 가져오는 함수
 const getTodo = () => {
-  ajax.get('http://localhost:9000/todos', _todos => {
-      todos = _todos;
+  ajax.get('todos', _todos => {
+    todos = _todos;
 
-      todos = todos.sort((todo1, todo2) => todo2.id - todo1.id);
-      render()
-    });
+    render();
+  })
 };
 
 // 렌더링
@@ -48,28 +46,28 @@ const render = () => {
 
 const addTodo = content => {
   const getId = () => Math.max(...todos.map(todo => todo.id), 0) + 1;
-  const addPayload = { id: getId(), content, completed: false };
+  const newTodo = { id: getId(), content, completed: false };
 
-  ajax.post('http://localhost:9000/todos', addPayload, _todos => {
-    todos = _todos
-  
+  ajax.post('/todos', newTodo, _todos => {
+    todos = _todos;
+    
     render();
   });
 };
 
 const removeTodo = id => {
 
-  ajax.delete(`http://localhost:9000/todos/${id}`, _todos => {
+  ajax.delete(`/todos/${id}`, _todos => {
     todos = _todos;
 
     render();
-  });
+  })
 };
 
 const completeAll = checkState => {
   const completed = checkState;
 
-  ajax.patch('http://localhost:9000/todos', { completed },  _todos => {
+  ajax.patch('/todos', { completed }, _todos => {
     todos = _todos;
 
     render();
@@ -77,13 +75,13 @@ const completeAll = checkState => {
 };
 
 const validateAllcompleted = () => {
-  if(todos.length) return todos.every(todo => todo.completed);
+  if (todos.length) return todos.every(todo => todo.completed);
 };
 
 const todoSelect = id => {
   const completed = !todos.find(todo => todo.id === +id).completed;
 
-  ajax.patch(`http://localhost:9000/todos/${id}`, { completed }, _todos => {
+  ajax.patch(`/todos/${id}`, { completed }, _todos => {
     todos = _todos;
 
     render();
@@ -92,7 +90,7 @@ const todoSelect = id => {
 
 const clearCompleted = () => {
 
-  ajax.delete('http://localhost:9000/todos/completed', _todos => {
+  ajax.delete('todos/completed', _todos => {
     todos = _todos;
 
     render();
@@ -137,7 +135,7 @@ $completedAll.onchange = () => {
 
 // 특정 todo 선택
 $todos.onchange = e => {
-  
+
   todoSelect(e.target.parentNode.id);
 };
 
@@ -149,7 +147,9 @@ $clearCompleted.onclick = e => {
 };
 
 // navitem 클릭시 display
-$nav.onclick = ({ target }) => {
+$nav.onclick = ({
+  target
+}) => {
   if (!target.matches('.nav > li:not(.active)')) return;
 
   changeNavState(target.id);
