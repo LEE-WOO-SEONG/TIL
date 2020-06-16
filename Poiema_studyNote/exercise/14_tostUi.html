@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Toast UI</title>
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400);
+
+    body {
+      font-family: 'Open Sans';
+      font-weight: 300;
+      background-color: #D6E1E5;
+      overflow: hidden;
+    }
+
+    h1 {
+      color: #DB5B33;
+      font-weight: 300;
+      text-align: center;
+    }
+
+    .toast-container {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+
+    .list-container {
+      list-style-type: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    .list {
+      position: relative;
+      padding: 30px 100px 40px 30px;
+      border-radius: 10px;
+      animation : show 1s both;
+    }
+
+    .list-heading {
+      font-weight: bold;
+      font-size: 20px;
+      margin-top: 0;
+    }
+
+    .btn-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      border: none;
+      background-color: transparent;
+    }
+
+    @keyframes show {
+      0% { transform: translateX(105%); }
+
+      100% { transform: translateX(0%); }
+    }
+
+  </style>
+</head>
+
+<body>
+  <h1>JavaScript Toast</h1>
+
+  <button class="show-success">Success</button>
+  <button class="show-error">Error</button>
+  <button class="show-warning">Warning</button>
+
+  <div class="toast-container">
+    <!-- <li> -->
+      <!-- <p>Well done</p> -->
+      <!-- <span></span> -->
+    <!-- </li> -->
+
+  </div>
+  <script>
+    // variables
+    const $btnSuccess = document.querySelector('.show-success');
+    const $btnError = document.querySelector('.show-error');
+    const $btnWarning = document.querySelector('.show-warning');
+    const $container = document.querySelector('.toast-container');
+    const $ul = document.createElement('ul');
+
+    $ul.className = 'list-container';
+    $container.appendChild($ul);
+    // functions
+    const createList = (heading, content) => {
+      const $li = document.createElement('li');
+
+      $li.className = `list item${$ul.children.length}`;
+      $li.innerHTML = `<p class="list-heading">${heading}</p><span class="list-content">This is ${content} alert</span><button type="button" class="btn-close">X</button>`
+      $li.style.backgroundColor = content === 'success' ? '#98FB98' : content === 'error' ? '#D8BFD8' : '#F5F5DC';
+      
+      $ul.appendChild($li);
+    };
+
+    // events
+    $btnSuccess.onclick = ({ target }) => {
+      const length = $ul.children.length;
+      createList(`Well done! ${length}`, 'success');
+
+      setTimeout(() => {
+        [...$ul.children].forEach(list => list.classList.contains(`item${length}`) ? $ul.removeChild(list) : list);
+      }, 3000);
+    };
+
+    $btnError.onclick = () => {
+      const length = $ul.children.length;
+      createList(`Check it out! ${$ul.children.length}`, 'error');
+
+      setTimeout(() => {
+        [...$ul.children].forEach(list => list.classList.contains(`item${length}`) ? $ul.removeChild(list) : list);
+      }, 3000);
+    };
+
+    $btnWarning.onclick = () => {
+      const length = $ul.children.length;
+      createList(`Check it out! ${$ul.children.length}`, 'warning');
+
+      setTimeout(() => {
+        [...$ul.children].forEach(list => list.classList.contains(`item${length}`) ? $ul.removeChild(list) : list);
+      }, 3000);
+    };
+
+    $ul.onclick = ({ target }) => {
+      if (!target.matches('.btn-close')) return;
+
+      $ul.removeChild(target.parentNode);
+    };
+
+  </script>
+</body>
+
+</html>

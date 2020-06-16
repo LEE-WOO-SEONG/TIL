@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Popup</title>
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400);
+
+    body {
+      font-family: 'Open Sans';
+      font-weight: 300;
+      background-color: #D6E1E5;
+    }
+
+    body.active {
+      background-color: rgb(100, 98, 98);
+    }
+
+    h1 {
+      color: #DB5B33;
+      font-weight: 300;
+      text-align: center;
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      top: 30px;
+      left: calc(50% - 35vw - 10px);
+      width: 70vw;
+      padding: 10px;
+      background-color: #fff;
+    }
+
+    .active .popup {
+      display: block;
+    }
+
+    .btn-close {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+    }
+
+  </style>
+</head>
+
+<body>
+  <h1>JavaScript Popup</h1>
+
+  <div class="popup">
+    <h1>JavaScript Popup</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua. Ut enim ad minim veniam</p>
+    <button class="btn-close">X</button>
+    <input type="text">
+    <button class="btn-ok">OK</button>
+    <button class="btn-cancel">Cancel</button>
+  </div>
+  <div class="overlay"></div>
+
+  <button class="toggle-popup">show popup</button>
+
+  <p class="popup-message"></p>
+  <script>
+    // variables
+    const $body = document.querySelector('body');
+    const $input = document.querySelector('[type="text"]');
+    const $btnInput = document.querySelector('.btn-ok');
+    const $message = document.querySelector('.popup-message');
+    const $btnOpen = document.querySelector('.toggle-popup');
+
+    // functions
+    const makeDisable = element => {
+      element.setAttribute('disabled', '')
+    };
+
+    const makeAble = element => {
+      element.removeAttribute('disabled');
+    }
+
+    // events
+    $body.onclick = ({ target }) => {
+      if (target.matches('.toggle-popup')) {
+        $body.classList.add('active');
+        makeDisable($btnOpen);
+      }
+      if (target.matches('.btn-close') || target.matches('.btn-cancel')) {
+        $body.classList.remove('active');
+        makeAble($btnOpen);
+      }
+    };
+
+    $btnInput.onclick = () => {
+      if (!$input.value.trim()) return;
+
+      $input.value = $input.value.trim();
+      $message.textContent = `from popup: ${$input.value}`;
+      $input.value = '';
+      $body.classList.remove('active');
+      makeAble($btnOpen);
+    }
+  </script>
+</body>
+
+</html>

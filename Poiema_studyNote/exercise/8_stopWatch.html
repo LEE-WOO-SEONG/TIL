@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Stop watch</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
+
+    .stop-watch {
+      font-family: 'Source Code Pro', monospace;
+      text-align: center;
+      font-size: 3em;
+      padding: 30px;
+    }
+
+    .control {
+      width: 300px;
+      padding: 5px;
+      margin-top: 15px;
+      font-size: 36px;
+      font-weight: bold;
+      border: 2px solid #f44336;
+      border-radius: 4px;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .control:hover {
+      background: #f44336;
+      color: aliceblue;
+    }
+  </style>
+  <title>Stop watch</title>
+</head>
+
+<body>
+  <div class="stop-watch">
+    <div class="display">00:00:00</div>
+    <button class="control">Start</button>
+  </div>
+  <script>
+    // variables
+    const $display = document.querySelector('.display');
+    const $btn = document.querySelector('.control');
+
+    // function
+    class Timer {
+      constructor() {
+        this.mm = '00';
+        this.ss = '00';
+        this.ms = '00';
+        this.isRunning = false;
+        this.timerId = 0;
+      }
+
+      playing() {
+        if (this.isRunning) {
+          this.timerId = setInterval(() => {
+            this.ms++;
+            this.ms = this.ms < 10 ? `0${this.ms}` : `${this.ms}`;
+
+            if (this.ms >= 100) {
+              this.ss++;
+              this.ss = this.ss < 10 ? `0${this.ss}` : `${this.ss}`;
+
+              this.ms = 0;
+            }
+
+            if (this.ss >= 60) {
+              this.mm++;
+              this.mm = this.mm < 10 ? `0${this.mm}` : `${this.ss}`;
+
+              this.ss = 0;
+            }
+
+            $display.textContent =  `${this.mm}:${this.ss}:${this.ms}`;
+          }, 10);
+        } else clearInterval(this.timerId);
+      };
+    }
+  
+    const timer = new Timer();
+
+    // events
+    $btn.onclick = () => {
+      timer.isRunning = !timer.isRunning;
+      timer.playing();
+      // $btn.classList.toggle('running');
+      // $btn.textContent = $btn.classList.contains('running') ? 'Stop' : 'Start';
+    };
+
+  </script>
+</body>
+
+</html>
