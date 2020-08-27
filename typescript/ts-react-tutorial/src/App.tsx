@@ -1,6 +1,7 @@
 import React from 'react';
 // import CounterContainer from './containers/CounterContainer';
-import TodoApp from './containers/TodoApp';
+// import TodoApp from './containers/TodoApp';
+import GithubProfileLoader from './containers/GithubProfileLoader';
 // import Counter from './Counter';
 // import ReducerSample from './ReducerSample';
 // import { SampleProvider } from './SampleContext';
@@ -9,7 +10,7 @@ import TodoApp from './containers/TodoApp';
 function App() {
   return (
     // <SampleProvider>
-    <TodoApp />
+    <GithubProfileLoader />
     // </SampleProvider>
   );
   // return <MyForm onSubmit={handleSubmit} />;
